@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-5">
             Empowering Every Child to{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800 underline decoration-emerald-300 decoration-wavy decoration-2">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800">
               Learn, Grow & Flourish
             </span>
           </h1>
