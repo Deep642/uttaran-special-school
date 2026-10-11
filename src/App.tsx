@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Programs } from './components/Programs';
+import { TeamSection } from './components/TeamSection';
 import { AlumniSection } from './components/AlumniSection';
 import { GallerySection } from './components/GallerySection';
 import { ContactSection } from './components/ContactSection';
@@ -23,6 +24,7 @@ export const App: React.FC = () => {
         <Hero />
         <About />
         <Programs />
+        <TeamSection />
         <AlumniSection />
         <GallerySection />
         <ContactSection />
