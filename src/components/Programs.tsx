@@ -67,49 +67,57 @@ export const Programs: React.FC = () => {
 
         {/* 3 Core Highlights from Official Brochure */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-          <div className="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-2xs flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
-              <Users className="w-5 h-5" />
+          <div className="bg-gradient-to-br from-emerald-50 via-white to-emerald-100/60 p-5 rounded-2xl border-2 border-emerald-200/90 shadow-sm hover:shadow-md transition-all flex items-start gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-500/30 flex items-center justify-center shrink-0">
+              <Users className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">অভিজ্ঞ স্পেশাল এডুকেটর ও থেরাপিস্ট</h4>
-              <p className="text-xs text-slate-600 mt-0.5">Empathetic, certified faculty with specialized Kolkata clinical panel guidance.</p>
+              <h4 className="text-sm font-extrabold text-emerald-950">অভিজ্ঞ স্পেশাল এডুকেটর ও থেরাপিস্ট</h4>
+              <p className="text-xs text-slate-700 mt-1 font-medium">Empathetic, certified faculty with specialized Kolkata clinical panel guidance.</p>
             </div>
           </div>
 
-          <div className="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-2xs flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5" />
+          <div className="bg-gradient-to-br from-sky-50 via-white to-sky-100/60 p-5 rounded-2xl border-2 border-sky-200/90 shadow-sm hover:shadow-md transition-all flex items-start gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/30 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">নিরাপদ ও আধুনিক শিশুবান্ধব পরিবেশ</h4>
-              <p className="text-xs text-slate-600 mt-0.5">Therapy-equipped sensory rooms, safety padding, and calm adaptive learning areas.</p>
+              <h4 className="text-sm font-extrabold text-sky-950">নিরাপদ ও আধুনিক শিশুবান্ধব পরিবেশ</h4>
+              <p className="text-xs text-slate-700 mt-1 font-medium">Therapy-equipped sensory rooms, safety padding, and calm adaptive learning areas.</p>
             </div>
           </div>
 
-          <div className="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-2xs flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
-              <Award className="w-5 h-5" />
+          <div className="bg-gradient-to-br from-amber-50 via-white to-amber-100/60 p-5 rounded-2xl border-2 border-amber-200/90 shadow-sm hover:shadow-md transition-all flex items-start gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/30 flex items-center justify-center shrink-0">
+              <Award className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">সুনির্দিষ্ট উন্নয়ন পরিকল্পনা (IEP)</h4>
-              <p className="text-xs text-slate-600 mt-0.5">1:1 Individualized Education & Care Plan tailored to every child's milestone pace.</p>
+              <h4 className="text-sm font-extrabold text-amber-950">সুনির্দিষ্ট উন্নয়ন পরিকল্পনা (IEP)</h4>
+              <p className="text-xs text-slate-700 mt-1 font-medium">1:1 Individualized Education & Care Plan tailored to every child's milestone pace.</p>
             </div>
           </div>
         </div>
 
         {/* Tab Selector for Quick Navigation */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8">
-          {developmentalPrograms.map((prog) => {
+          {developmentalPrograms.map((prog, pIdx) => {
             const isActive = prog.id === activeTab;
+            const tabGradients = [
+              'bg-gradient-to-r from-rose-600 to-rose-700',
+              'bg-gradient-to-r from-sky-600 to-sky-700',
+              'bg-gradient-to-r from-emerald-600 to-emerald-700',
+              'bg-gradient-to-r from-amber-600 to-amber-700',
+            ];
+            const activeBg = tabGradients[pIdx % 4];
+
             return (
               <button
                 key={prog.id}
                 onClick={() => setActiveTab(prog.id)}
-                className={`inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-xs ${
                   isActive
-                    ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/25 scale-102'
-                    : 'bg-white text-slate-700 border border-slate-200 hover:bg-emerald-50/50 hover:text-emerald-900 hover:border-emerald-200'
+                    ? `${activeBg} text-white shadow-md scale-102 ring-2 ring-white`
+                    : 'bg-white/90 text-slate-700 border-2 border-slate-200 hover:border-emerald-300 hover:bg-white hover:text-slate-900'
                 }`}
               >
                 {getIcon(prog.icon)}

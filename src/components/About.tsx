@@ -120,22 +120,46 @@ export const About: React.FC = () => {
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             const theme = [
-              { iconBg: 'bg-rose-100 text-rose-700', borderHover: 'hover:border-rose-300' },
-              { iconBg: 'bg-sky-100 text-sky-700', borderHover: 'hover:border-sky-300' },
-              { iconBg: 'bg-emerald-100 text-emerald-700', borderHover: 'hover:border-emerald-300' },
-              { iconBg: 'bg-amber-100 text-amber-700', borderHover: 'hover:border-amber-300' },
+              {
+                bg: 'bg-gradient-to-br from-rose-50 via-white to-rose-100/40',
+                border: 'border-rose-200 hover:border-rose-400',
+                iconBg: 'bg-gradient-to-br from-rose-500 to-rose-600 text-white shadow-md shadow-rose-500/30',
+                titleColor: 'text-rose-900',
+                glow: 'hover:shadow-rose-500/20',
+              },
+              {
+                bg: 'bg-gradient-to-br from-sky-50 via-white to-sky-100/40',
+                border: 'border-sky-200 hover:border-sky-400',
+                iconBg: 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/30',
+                titleColor: 'text-sky-900',
+                glow: 'hover:shadow-sky-500/20',
+              },
+              {
+                bg: 'bg-gradient-to-br from-emerald-50 via-white to-emerald-100/40',
+                border: 'border-emerald-200 hover:border-emerald-400',
+                iconBg: 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-500/30',
+                titleColor: 'text-emerald-900',
+                glow: 'hover:shadow-emerald-500/20',
+              },
+              {
+                bg: 'bg-gradient-to-br from-amber-50 via-white to-amber-100/40',
+                border: 'border-amber-200 hover:border-amber-400',
+                iconBg: 'bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/30',
+                titleColor: 'text-amber-950',
+                glow: 'hover:shadow-amber-500/20',
+              },
             ][idx % 4];
 
             return (
               <div
                 key={idx}
-                className={`p-6 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white ${theme.borderHover} hover:shadow-sm transition-all`}
+                className={`p-6 rounded-2xl ${theme.bg} border-2 ${theme.border} hover:shadow-xl ${theme.glow} hover:-translate-y-1 transition-all duration-300 flex flex-col`}
               >
-                <div className={`w-12 h-12 rounded-xl ${theme.iconBg} flex items-center justify-center mb-4 shadow-2xs`}>
+                <div className={`w-12 h-12 rounded-xl ${theme.iconBg} flex items-center justify-center mb-4`}>
                   <Icon className="w-6 h-6" />
                 </div>
-                <h4 className="text-base font-bold text-slate-900 mb-2">{pillar.title}</h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{pillar.description}</p>
+                <h4 className={`text-base font-extrabold ${theme.titleColor} mb-2`}>{pillar.title}</h4>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">{pillar.description}</p>
               </div>
             );
           })}

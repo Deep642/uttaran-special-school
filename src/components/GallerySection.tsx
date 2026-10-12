@@ -93,14 +93,23 @@ export const GallerySection: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-10">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
+            const activeColors: Record<string, string> = {
+              all: 'bg-slate-900 text-white shadow-md shadow-slate-900/30 ring-2 ring-slate-900',
+              videos: 'bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-md shadow-rose-600/30 ring-2 ring-rose-500',
+              classroom: 'bg-gradient-to-r from-sky-600 to-sky-700 text-white shadow-md shadow-sky-600/30 ring-2 ring-sky-500',
+              therapy: 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white shadow-md shadow-emerald-600/30 ring-2 ring-emerald-500',
+              crafts: 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/30 ring-2 ring-amber-400',
+              events: 'bg-gradient-to-r from-rose-600 to-amber-600 text-white shadow-md shadow-rose-600/30 ring-2 ring-rose-400',
+            };
+
             return (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer shadow-xs ${
                   isActive
-                    ? 'bg-slate-900 text-white shadow-md scale-102 ring-2 ring-slate-900'
-                    : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300'
+                    ? `${activeColors[cat.id] || 'bg-slate-900 text-white'} scale-103`
+                    : 'bg-white/95 text-slate-700 border-2 border-slate-200 hover:border-slate-400 hover:bg-white hover:text-slate-900'
                 }`}
               >
                 {cat.label}

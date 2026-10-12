@@ -94,28 +94,52 @@ export const Hero: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4 border-t border-slate-200/70">
           {schoolInfo.stats.map((stat, idx) => {
             const cardTheme = [
-              { bg: 'bg-rose-50/70', border: 'border-rose-200/80', iconBg: 'bg-rose-100 text-rose-700' },
-              { bg: 'bg-sky-50/70', border: 'border-sky-200/80', iconBg: 'bg-sky-100 text-sky-700' },
-              { bg: 'bg-emerald-50/70', border: 'border-emerald-200/80', iconBg: 'bg-emerald-100 text-emerald-700' },
-              { bg: 'bg-amber-50/70', border: 'border-amber-200/80', iconBg: 'bg-amber-100 text-amber-700' },
+              {
+                bg: 'bg-gradient-to-br from-rose-500/10 via-rose-100/60 to-white/90',
+                border: 'border-rose-300/80 hover:border-rose-500',
+                iconBg: 'bg-gradient-to-br from-rose-500 to-rose-600 text-white shadow-md shadow-rose-500/30',
+                badgeText: 'text-rose-700',
+                glow: 'hover:shadow-rose-500/20',
+              },
+              {
+                bg: 'bg-gradient-to-br from-sky-500/10 via-sky-100/60 to-white/90',
+                border: 'border-sky-300/80 hover:border-sky-500',
+                iconBg: 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/30',
+                badgeText: 'text-sky-700',
+                glow: 'hover:shadow-sky-500/20',
+              },
+              {
+                bg: 'bg-gradient-to-br from-emerald-500/10 via-emerald-100/60 to-white/90',
+                border: 'border-emerald-300/80 hover:border-emerald-500',
+                iconBg: 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-500/30',
+                badgeText: 'text-emerald-700',
+                glow: 'hover:shadow-emerald-500/20',
+              },
+              {
+                bg: 'bg-gradient-to-br from-amber-500/10 via-amber-100/60 to-white/90',
+                border: 'border-amber-300/80 hover:border-amber-500',
+                iconBg: 'bg-gradient-to-br from-amber-500 to-amber-600 text-white shadow-md shadow-amber-500/30',
+                badgeText: 'text-amber-800',
+                glow: 'hover:shadow-amber-500/20',
+              },
             ][idx % 4];
 
             return (
               <div
                 key={idx}
-                className={`${cardTheme.bg} p-5 rounded-2xl border ${cardTheme.border} shadow-2xs hover:shadow-md transition-all`}
+                className={`${cardTheme.bg} backdrop-blur-md p-5 rounded-2xl border-2 ${cardTheme.border} shadow-sm hover:shadow-xl ${cardTheme.glow} hover:-translate-y-1 transition-all duration-300`}
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className={`w-8 h-8 rounded-lg ${cardTheme.iconBg} flex items-center justify-center font-bold text-xs`}>
-                    {idx === 0 && <Sparkles className="w-4 h-4" />}
-                    {idx === 1 && <Heart className="w-4 h-4" />}
-                    {idx === 2 && <ShieldCheck className="w-4 h-4" />}
-                    {idx === 3 && <Users className="w-4 h-4" />}
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className={`w-10 h-10 rounded-xl ${cardTheme.iconBg} flex items-center justify-center font-bold text-xs`}>
+                    {idx === 0 && <Sparkles className="w-5 h-5" />}
+                    {idx === 1 && <Heart className="w-5 h-5" />}
+                    {idx === 2 && <ShieldCheck className="w-5 h-5" />}
+                    {idx === 3 && <Users className="w-5 h-5" />}
                   </div>
-                  <div className="text-2xl font-extrabold text-slate-900">{stat.value}</div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{stat.value}</div>
                 </div>
-                <h3 className="text-sm font-bold text-slate-800 mb-0.5">{stat.label}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{stat.description}</p>
+                <h3 className={`text-sm font-extrabold ${cardTheme.badgeText} mb-1 tracking-tight`}>{stat.label}</h3>
+                <p className="text-xs text-slate-700 font-medium leading-relaxed">{stat.description}</p>
               </div>
             );
           })}
