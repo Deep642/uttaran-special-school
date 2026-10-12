@@ -22,24 +22,6 @@ interface BrochureItem {
 
 const brochureList: BrochureItem[] = [
   {
-    title: 'Official Admissions Leaflet & Prospectus',
-    bengaliTitle: 'অফিসিয়াল ভর্তি প্রসপেক্টাস ও নির্দেশিকা',
-    language: 'Bengali (বাংলা সংস্করণ)',
-    badge: 'Bengali Version',
-    description: 'Complete institutional prospectus with detailed clinical faculties, therapies offered, admission procedure, contact numbers, and school vision.',
-    bengaliDescription: 'ভর্তি প্রক্রিয়া, চিকিৎসা ও থেরাপি সুবিধা, ফোন নম্বর এবং বিদ্যালয়ের সম্পূর্ণ নির্দেশিকা সম্বলিত পুস্তিকা।',
-    fileUrl: '/brochures/Uttaran_School_Prospectus_Bengali.pdf',
-    fileName: 'Uttaran_School_Prospectus_Bengali.pdf',
-    colorScheme: {
-      border: 'border-emerald-300 hover:border-emerald-500',
-      badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-300',
-      badgeText: 'text-emerald-800',
-      buttonBg: 'bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white shadow-emerald-600/30',
-      iconBg: 'bg-emerald-500 text-white shadow-emerald-500/30',
-      cardBg: 'bg-gradient-to-br from-emerald-50/80 via-white to-emerald-100/40',
-    },
-  },
-  {
     title: 'Institutional Souvenir & Clinical Overview',
     bengaliTitle: 'উত্তরণ সুভ্যেনির ও প্রাতিষ্ঠানিক বিবরণী',
     language: 'English (English Edition)',
@@ -60,19 +42,19 @@ const brochureList: BrochureItem[] = [
   {
     title: 'Commemorative Smoronika (Special Edition)',
     bengaliTitle: 'বিশেষ স্মরণিকা ও বার্ষিক প্রতিবেদন',
-    language: 'Bilingual (স্মরণিকা সংস্করণ)',
-    badge: 'Smoronika Edition',
+    language: 'Bengali (বাংলা সংস্করণ)',
+    badge: 'Bengali Edition',
     description: 'Cultural events, child milestone achievements, patron messages, and community inclusion reports from Berhampore.',
     bengaliDescription: 'সাংস্কৃতিক অনুষ্ঠান, বার্ষিক ক্রীড়া, শিক্ষার্থীদের সাফল্য ও বিশিষ্টজনদের শুভেচ্ছাবার্তা সম্বলিত সংকলন।',
     fileUrl: '/brochures/Uttaran_Special_School_Smoronika.pdf',
     fileName: 'Uttaran_Special_School_Smoronika.pdf',
     colorScheme: {
-      border: 'border-amber-300 hover:border-amber-500',
-      badgeBg: 'bg-amber-100 text-amber-900 border-amber-300',
-      badgeText: 'text-amber-900',
-      buttonBg: 'bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white shadow-amber-600/30',
-      iconBg: 'bg-amber-500 text-white shadow-amber-500/30',
-      cardBg: 'bg-gradient-to-br from-amber-50/80 via-white to-amber-100/40',
+      border: 'border-emerald-300 hover:border-emerald-500',
+      badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-300',
+      badgeText: 'text-emerald-900',
+      buttonBg: 'bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white shadow-emerald-600/30',
+      iconBg: 'bg-emerald-500 text-white shadow-emerald-500/30',
+      cardBg: 'bg-gradient-to-br from-emerald-50/80 via-white to-emerald-100/40',
     },
   },
 ];
@@ -104,8 +86,8 @@ export const BrochureDownloads: React.FC = () => {
           </p>
         </div>
 
-        {/* Brochure Download Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        {/* Brochure Download Cards Grid (2 Balanced Editions: English Edition & Bengali Edition) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {brochureList.map((item, idx) => (
             <div
               key={idx}
