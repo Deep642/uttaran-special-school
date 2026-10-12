@@ -23,6 +23,8 @@ export interface SchoolInfo {
     district: string;
     state: string;
     pin: string;
+    floorInfo?: string;
+    plusCode?: string;
     fullFormatted: string;
     bengaliFormatted: string;
   };
@@ -65,15 +67,16 @@ export const schoolInfo: SchoolInfo = {
     phoneFormatted: "+91 96415 15126",
   },
   address: {
-    line1: "20/5, C. R. Das Road",
+    line1: "20/5, C. R. Das Road, 3rd Floor",
     locality: "Dhopaghati",
     landmark: "Near Laldighi",
     city: "Berhampore",
     district: "Murshidabad",
     state: "West Bengal",
     pin: "742101",
-    fullFormatted: "20/5, C. R. Das Road, Dhopaghati (Near Laldighi), Berhampore, Murshidabad, West Bengal 742101",
-    bengaliFormatted: "২০/৫, সি. আর. দাস রোড, ধূপঘাঁটি (লালদিঘির কাছে), বহরমপুর, মুর্শিদাবাদ",
+    floorInfo: "3rd Floor (তৃতীয় তল)",
+    fullFormatted: "20/5, C. R. Das Road (3rd Floor), Dhopaghati (Near Laldighi), Berhampore, Murshidabad, West Bengal 742101",
+    bengaliFormatted: "২০/৫, সি. আর. দাস রোড (তৃতীয় তল), ধূপঘাঁটি (লালদিঘির কাছে), বহরমপুর, মুর্শিদাবাদ - ৭৪২১০১",
   },
   contacts: {
     phonePrimary: "+919733542545",
@@ -86,9 +89,9 @@ export const schoolInfo: SchoolInfo = {
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=61565479896427",
   },
-  // Accurate Google Maps Search & Direct Directions Link for Uttaran Special School
-  mapEmbedUrl: "https://maps.google.com/maps?q=Uttaran+Special+School+Dhopaghati+Berhampore+Murshidabad+West+Bengal+742101&t=&z=15&ie=UTF8&iwloc=&output=embed",
-  mapDirectLink: "https://www.google.com/maps/search/?api=1&query=Uttaran+Special+School+Dhopaghati+Berhampore+Murshidabad+West+Bengal+742101",
+  // Exact Google Maps Routing Link (Opens directly in Google Maps application or web page)
+  mapEmbedUrl: "https://maps.google.com/maps?q=37V5%2BV3C%2C+Raninagar%2C+Gora+Bazar%2C+Berhampore%2C+West+Bengal+742101&t=&z=17&ie=UTF8&iwloc=&output=embed",
+  mapDirectLink: "https://www.google.com/maps/place/Berhampore+Prabeen+Sabha/@24.0946904,88.257626,17z/data=!4m14!1m7!3m6!1s0x39f97dd196a2e391:0xdf653093849f0b16!2sBERHAMPORE+MUNICIPALITY!8m2!3d24.0942748!4d88.2543094!16s%2Fg%2F1th5gw9n!3m5!1s0x39f97dce4f875061:0xe5c2546ff535bdd6!8m2!3d24.0946904!4d88.257626!16s%2Fg%2F11ggzf5lv6?entry=ttu",
   statusNotice: "Admissions & Care Plan Assessment: To arrange personalized developmental evaluations (IEP) or consult with our therapists, please call our school desk or visit during working hours.",
   stats: [
     {

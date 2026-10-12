@@ -124,7 +124,12 @@ export const ContactSection: React.FC = () => {
               <div className="flex items-start gap-3.5">
                 <MapPin className="w-5 h-5 text-emerald-700 shrink-0 mt-1" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900">Campus Address (ঠিকানা):</h4>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="text-sm font-bold text-slate-900">Campus Address (ঠিকানা):</h4>
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300">
+                      🏢 3rd Floor (তৃতীয় তল)
+                    </span>
+                  </div>
                   <p className="text-xs sm:text-sm font-semibold text-slate-800 mt-0.5">
                     {schoolInfo.address.fullFormatted}
                   </p>
