@@ -26,9 +26,9 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80' : 'bg-white/80 backdrop-blur-sm border-b border-slate-100'}`}>
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/90' : 'bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-2xs'}`}>
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo & School Name */}
           <a href="#" className="flex items-center gap-1.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg p-0.5 sm:p-1">
             <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-emerald-300 shadow-xs shrink-0 group-hover:scale-105 transition-transform bg-white">
@@ -91,7 +91,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 shadow-xl px-4 pt-3 pb-6 transition-all fade-in">
+        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-b border-slate-200 shadow-2xl px-4 pt-3 pb-6 max-h-[calc(100vh-4.5rem)] overflow-y-auto transition-all fade-in">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a

@@ -28,8 +28,8 @@ export const App: React.FC = () => {
       {/* Main Navigation */}
       <Navbar />
 
-      {/* Main Content Sections */}
-      <main className="flex-1">
+      {/* Main Content Sections with top offset for fixed navbar */}
+      <main className="flex-1 pt-16 sm:pt-20">
         <Hero />
         <PhotoMarquee />
         <About />
