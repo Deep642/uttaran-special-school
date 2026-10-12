@@ -48,6 +48,31 @@ const marqueePhotos: PhotoItem[] = [
     bengaliTag: "হাতের সূক্ষ্ম কাজ ও গ্রিপ",
   },
   {
+    src: "/gallery/sports-prize-ceremony.jpg",
+    title: "Annual Sports Champions & Prize Podium",
+    bengaliTag: "বার্ষিক ক্রীড়ায় বিজয়ী সংবর্ধনা",
+  },
+  {
+    src: "/gallery/world-disability-day.jpg",
+    title: "World Disability Day Observance",
+    bengaliTag: "বিশ্ব প্রতিবন্ধী দিবস উদ্‌যাপন",
+  },
+  {
+    src: "/gallery/currency-learning-session.jpg",
+    title: "Money & Practical Math Skill",
+    bengaliTag: "টাকা চেনা ও ব্যবহারিক পাঠ",
+  },
+  {
+    src: "/gallery/cultural-music-harmonium.jpg",
+    title: "Cultural Song & Harmonium Gathering",
+    bengaliTag: "গান ও সুরে আনন্দঘন মুহূর্ত",
+  },
+  {
+    src: "/gallery/annual-sports-stage.jpg",
+    title: "Annual Sports Day Opening Gathering",
+    bengaliTag: "বার্ষিক ক্রীড়ার বর্ণাঢ্য উদ্বোধনী মঞ্চ",
+  },
+  {
     src: "/gallery/school-media-18.jpg",
     title: "Calm Corner & Emotional Grounding",
     bengaliTag: "আবেগ নিয়ন্ত্রণ ও প্রশান্তি",
