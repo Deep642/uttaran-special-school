@@ -39,10 +39,10 @@ export const Navbar: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-slate-900 text-sm sm:text-xl tracking-tight leading-none group-hover:text-emerald-700 transition-colors">
+                <span className="font-extrabold text-rose-700 text-sm sm:text-xl tracking-tight leading-none group-hover:text-rose-800 transition-colors">
                   UTTARAN
                 </span>
-                <span className="text-[11px] sm:text-xs font-semibold text-emerald-800 bg-emerald-100/70 px-1.5 py-0.5 rounded border border-emerald-200">
+                <span className="text-[11px] sm:text-xs font-bold text-sky-800 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200">
                   উত্তরণ
                 </span>
               </div>

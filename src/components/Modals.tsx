@@ -51,13 +51,25 @@ export const VideoModal: React.FC<VideoModalProps> = ({
         {/* Video Player or Responsive Video Container */}
         <div className="relative aspect-video bg-slate-900 flex items-center justify-center">
           {videoUrl ? (
-            <iframe
-              className="w-full h-full"
-              src={videoUrl}
-              title={videoTitle}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            videoUrl.endsWith('.mp4') ? (
+              <video
+                src={videoUrl}
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain bg-black"
+              >
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <iframe
+                className="w-full h-full"
+                src={videoUrl}
+                title={videoTitle}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )
           ) : (
             <div className="text-center p-8 text-white max-w-md">
               <Play className="w-12 h-12 text-emerald-400 mx-auto mb-3" />

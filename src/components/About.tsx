@@ -105,16 +105,23 @@ export const About: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Pillars Grid */}
+        {/* 4 Pillars Grid with 4 Logo Colors */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
+            const theme = [
+              { iconBg: 'bg-rose-100 text-rose-700', borderHover: 'hover:border-rose-300' },
+              { iconBg: 'bg-sky-100 text-sky-700', borderHover: 'hover:border-sky-300' },
+              { iconBg: 'bg-emerald-100 text-emerald-700', borderHover: 'hover:border-emerald-300' },
+              { iconBg: 'bg-amber-100 text-amber-700', borderHover: 'hover:border-amber-300' },
+            ][idx % 4];
+
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:border-emerald-300 hover:shadow-sm transition-all"
+                className={`p-6 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white ${theme.borderHover} hover:shadow-sm transition-all`}
               >
-                <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
+                <div className={`w-12 h-12 rounded-xl ${theme.iconBg} flex items-center justify-center mb-4 shadow-2xs`}>
                   <Icon className="w-6 h-6" />
                 </div>
                 <h4 className="text-base font-bold text-slate-900 mb-2">{pillar.title}</h4>

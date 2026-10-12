@@ -12,20 +12,26 @@ export const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           {/* Top Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200/90 text-emerald-900 text-xs sm:text-sm font-semibold mb-5 shadow-xs">
-            <Sparkles className="w-4 h-4 text-emerald-700" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs sm:text-sm font-semibold mb-5 shadow-2xs">
+            <div className="flex -space-x-1">
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-white" />
+              <span className="w-2.5 h-2.5 rounded-full bg-sky-500 ring-2 ring-white" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 ring-2 ring-white" />
+            </div>
             <span>প্রতিটি শিশুই অনন্য, প্রতিটি শিশুই সম্ভাবনাময় • Berhampore</span>
           </div>
 
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-4">
             Empowering Every Child to{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-sky-600 to-emerald-600">
               Learn, Grow & Flourish
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base font-bold text-emerald-800 mb-3">
+          <p className="text-sm sm:text-base font-bold text-slate-800 mb-3">
+            <span className="text-rose-600 font-extrabold">উত্তরণ: </span>
             বিশেষ চাহিদাসম্পন্ন শিশুদের স্নেহময় ও নির্ভরযোগ্য ঠিকানা
           </p>
 
@@ -40,7 +46,7 @@ export const Hero: React.FC = () => {
             <div className="grid grid-cols-2 gap-2.5 w-full sm:hidden">
               <a
                 href={`tel:${schoolInfo.contacts.phonePrimary}`}
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-3 bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md shadow-emerald-700/20"
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-3 bg-rose-600 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md shadow-rose-600/20"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call School</span>
@@ -50,17 +56,17 @@ export const Hero: React.FC = () => {
                 href="#contact"
                 className="inline-flex items-center justify-center gap-1.5 px-3 py-3 bg-white active:scale-95 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 shadow-xs"
               >
-                <MapPin className="w-3.5 h-3.5 text-teal-600" />
+                <MapPin className="w-3.5 h-3.5 text-sky-600" />
                 <span>Contact Us</span>
               </a>
             </div>
 
             <a
               href="#programs"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 active:scale-95 text-white font-semibold text-sm sm:text-base rounded-xl shadow-md shadow-emerald-700/20 hover:shadow-lg transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-semibold text-sm sm:text-base rounded-xl shadow-md shadow-slate-900/20 hover:shadow-lg transition-all"
             >
-              <span>Explore Developmental Wings</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Explore Clinical Wings</span>
+              <ArrowRight className="w-4 h-4 text-amber-400" />
             </a>
 
             <a
@@ -68,41 +74,50 @@ export const Hero: React.FC = () => {
               className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 active:scale-95 text-slate-800 font-semibold text-sm sm:text-base rounded-xl border border-slate-300/80 shadow-xs hover:border-emerald-300 transition-all"
             >
               <Phone className="w-4 h-4 text-emerald-600" />
-              <span>Call Us: {schoolInfo.contacts.phoneFormatted}</span>
+              <span>Call Desk: {schoolInfo.contacts.phoneFormatted}</span>
             </a>
 
             <a
               href={schoolInfo.mapDirectLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-teal-50 hover:bg-teal-100/80 active:scale-95 text-teal-900 font-semibold text-sm sm:text-base rounded-xl border border-teal-200/90 transition-all"
+              className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-sky-50 hover:bg-sky-100 active:scale-95 text-sky-900 font-semibold text-sm sm:text-base rounded-xl border border-sky-200 transition-all"
             >
-              <MapPin className="w-4 h-4 text-teal-600" />
+              <MapPin className="w-4 h-4 text-sky-600" />
               <span>Locate on Map</span>
             </a>
           </div>
         </div>
 
-        {/* Highlight cards */}
+        {/* Highlight cards styled with the 4 Logo Colors */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4 border-t border-slate-200/70">
-          {schoolInfo.stats.map((stat, idx) => (
-            <div
-              key={idx}
-              className="bg-white/80 backdrop-blur-xs p-5 rounded-2xl border border-slate-200/70 shadow-xs hover:shadow-md hover:border-emerald-200 transition-all"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs">
-                  {idx === 0 && <Sparkles className="w-4 h-4" />}
-                  {idx === 1 && <Heart className="w-4 h-4" />}
-                  {idx === 2 && <ShieldCheck className="w-4 h-4" />}
-                  {idx === 3 && <Users className="w-4 h-4" />}
+          {schoolInfo.stats.map((stat, idx) => {
+            const cardTheme = [
+              { bg: 'bg-rose-50/70', border: 'border-rose-200/80', iconBg: 'bg-rose-100 text-rose-700' },
+              { bg: 'bg-sky-50/70', border: 'border-sky-200/80', iconBg: 'bg-sky-100 text-sky-700' },
+              { bg: 'bg-emerald-50/70', border: 'border-emerald-200/80', iconBg: 'bg-emerald-100 text-emerald-700' },
+              { bg: 'bg-amber-50/70', border: 'border-amber-200/80', iconBg: 'bg-amber-100 text-amber-700' },
+            ][idx % 4];
+
+            return (
+              <div
+                key={idx}
+                className={`${cardTheme.bg} p-5 rounded-2xl border ${cardTheme.border} shadow-2xs hover:shadow-md transition-all`}
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className={`w-8 h-8 rounded-lg ${cardTheme.iconBg} flex items-center justify-center font-bold text-xs`}>
+                    {idx === 0 && <Sparkles className="w-4 h-4" />}
+                    {idx === 1 && <Heart className="w-4 h-4" />}
+                    {idx === 2 && <ShieldCheck className="w-4 h-4" />}
+                    {idx === 3 && <Users className="w-4 h-4" />}
+                  </div>
+                  <div className="text-2xl font-extrabold text-slate-900">{stat.value}</div>
                 </div>
-                <div className="text-2xl font-extrabold text-slate-900">{stat.value}</div>
+                <h3 className="text-sm font-bold text-slate-800 mb-0.5">{stat.label}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{stat.description}</p>
               </div>
-              <h3 className="text-sm font-bold text-slate-800 mb-0.5">{stat.label}</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">{stat.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
