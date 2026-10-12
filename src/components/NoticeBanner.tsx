@@ -23,9 +23,9 @@ export const NoticeBanner: React.FC = () => {
         <div className="flex items-center gap-2 shrink-0">
           <a
             href={`tel:${schoolInfo.contacts.phonePrimary}`}
-            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-medium text-xs transition-colors shadow-xs"
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-medium text-xs whitespace-nowrap transition-colors shadow-xs"
           >
-            <PhoneCall className="w-3.5 h-3.5" />
+            <PhoneCall className="w-3.5 h-3.5 shrink-0" />
             <span>Call School</span>
           </a>
           <button

@@ -57,16 +57,6 @@ export const Navbar: React.FC = () => {
           </nav>
 
           <div className="flex items-center gap-1 sm:gap-2">
-            {/* Quick Call Button (Always visible on mobile & desktop) */}
-            <a
-              href={`tel:${schoolInfo.contacts.phonePrimary}`}
-              aria-label="Call school directly"
-              className="inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-50 border border-emerald-200/90 px-2 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition-colors shadow-2xs"
-            >
-              <Phone className="h-3.5 w-3.5 text-emerald-700" />
-              <span>Call</span>
-            </a>
-
             {/* Contact Us button (Always visible on mobile & desktop) */}
             <a
               href="#contact"
