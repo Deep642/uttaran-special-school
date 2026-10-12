@@ -12,22 +12,26 @@ export const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           {/* Top Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200/90 text-emerald-800 text-xs sm:text-sm font-semibold mb-6 shadow-xs">
-            <Sparkles className="w-4 h-4 text-emerald-600" />
-            <span>Special Education & Day-Care Learning Center in Berhampore</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200/90 text-emerald-900 text-xs sm:text-sm font-semibold mb-5 shadow-xs">
+            <Sparkles className="w-4 h-4 text-emerald-700" />
+            <span>প্রতিটি শিশুই অনন্য, প্রতিটি শিশুই সম্ভাবনাময় • Berhampore</span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-5">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-4">
             Empowering Every Child to{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-800">
               Learn, Grow & Flourish
             </span>
           </h1>
 
+          <p className="text-sm sm:text-base font-bold text-emerald-800 mb-3">
+            বিশেষ চাহিদাসম্পন্ন শিশুদের স্নেহময় ও নির্ভরযোগ্য ঠিকানা
+          </p>
+
           {/* Subtitle */}
-          <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-normal leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
-            Unlike conventional schools with rigid grades, <strong>Uttaran Special School</strong> groups students by developmental milestones — fostering sensory growth, everyday communication, and joyful independence.
+          <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
+            Situated at Dhopaghati, Berhampore, <strong>Uttaran Special School</strong> nurtures children through individualized therapies (IEP), speech and occupational development, and cheerful community inclusion.
           </p>
 
           {/* Call to action buttons */}

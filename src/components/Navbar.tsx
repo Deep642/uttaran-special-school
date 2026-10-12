@@ -30,14 +30,23 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo & School Name */}
           <a href="#" className="flex items-center gap-1.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg p-0.5 sm:p-1">
-            <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
-              <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6" />
+            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-emerald-300 shadow-xs shrink-0 group-hover:scale-105 transition-transform bg-white">
+              <img
+                src="/uttaran-logo.jpg"
+                alt="Uttaran Special School Official Emblem"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-slate-900 text-sm sm:text-xl tracking-tight leading-none group-hover:text-emerald-700 transition-colors">
-                UTTARAN
-              </span>
-              <span className="hidden sm:block text-xs font-semibold text-emerald-700 tracking-wide uppercase mt-0.5">
+              <div className="flex items-center gap-1.5">
+                <span className="font-extrabold text-slate-900 text-sm sm:text-xl tracking-tight leading-none group-hover:text-emerald-700 transition-colors">
+                  UTTARAN
+                </span>
+                <span className="text-[11px] sm:text-xs font-semibold text-emerald-800 bg-emerald-100/70 px-1.5 py-0.5 rounded border border-emerald-200">
+                  উত্তরণ
+                </span>
+              </div>
+              <span className="hidden sm:block text-[11px] font-semibold text-emerald-700 tracking-wide uppercase mt-0.5">
                 Special School • Berhampore
               </span>
             </div>

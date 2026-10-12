@@ -9,6 +9,22 @@ export interface GalleryItem {
 
 export const galleryItems: GalleryItem[] = [
   {
+    id: "g0-brochure",
+    title: "Official Admissions Prospectus & Care Wings",
+    category: "events",
+    categoryLabel: "Prospectus & Events",
+    description: "Official published leaflet showcasing special facilities, admission guidelines, and direct contact numbers.",
+    imageUrl: "/uttaran-brochure.jpg",
+  },
+  {
+    id: "g0-logo",
+    title: "Official School Emblem & Badge",
+    category: "events",
+    categoryLabel: "Prospectus & Events",
+    description: "Embroidered official institutional emblem of Uttaran Special School, Berhampur, Murshidabad.",
+    imageUrl: "/uttaran-logo.jpg",
+  },
+  {
     id: "g1",
     title: "Sensory Stimulation Corner",
     category: "therapy",

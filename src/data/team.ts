@@ -23,14 +23,14 @@ export interface StaffMember {
 }
 
 export const leadershipData: LeadershipInfo = {
-  name: "Director / Founder",
-  role: "Founder & Managing Trustee",
-  titleBadge: "From the Founder's Desk",
-  credentials: "M.A., Dip. in Special Education & Social Rehabilitation",
+  name: "Partha Bhattacharjee (পার্থ ভট্টাচার্য)",
+  role: "Principal & Administrator",
+  titleBadge: "From the Principal's Desk • সম্পাদকের কলমে",
+  credentials: "Administrator & Special Education Lead • Dhopaghati, Berhampore",
   photoUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80",
-  visionSnippet: "Every child deserves to experience the dignity of progress, the warmth of acceptance, and the pride of self-reliance.",
-  message: "When we established Uttaran Special School in Berhampore, our mission was simple yet uncompromising: to provide a loving environment where children with neurodivergent needs, intellectual disabilities, and speech delays are celebrated rather than pressured. We do not focus on rigid examinations; we nurture daily living milestones, emotional stability, and vocational independence so that every child can walk with confidence.",
-  contactNote: "Open for personal consultations by prior appointment every Saturday morning.",
+  visionSnippet: "প্রতিটি শিশুই অনন্য, প্রতিটি শিশুই সম্ভাবনাময়। ভালোবাসা, সংগ্রাম ও সম্ভাবনার এক আলোকবর্তিকা।",
+  message: "২০১৬ সালে 'উত্তরণ স্প্যাস্টিক সোসাইটি' নামে ছোট্ট একটি থেরাপি সেন্টার হিসেবে যে যাত্রা শুরু হয়েছিল, ২০২০ সালের ৬ ফেব্রুয়ারি তা পূর্ণাঙ্গ 'উত্তরণ স্পেশাল স্কুল'-এ রূপ নেয়। প্রতিটি শিশুর মধ্যেই লুকিয়ে থাকে বিশেষ শক্তি ও সম্ভাবনা। এখানে কোনো শিশুকে তার সীমাবদ্ধতা দিয়ে বিচার করা হয় না, বরং ভালোবাসা, যত্ন ও সঠিক প্রশিক্ষণের মাধ্যমে তাকে সমাজের মূল স্রোতে ফিরিয়ে আনাই আমাদের একমাত্র সংকল্প।",
+  contactNote: "Direct Desk & WhatsApp: +91 96415 15126 | School Desk: +91 97335 42545",
 };
 
 export const staffMembers: StaffMember[] = [

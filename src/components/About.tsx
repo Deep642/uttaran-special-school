@@ -38,7 +38,7 @@ export const About: React.FC = () => {
             Nurturing Potential Without Conventional Pressure
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Located near Laldighi in Raninagar, <strong>Uttaran Special School</strong> was founded to offer a safe sanctuary for children and young adults with developmental and intellectual diversity.
+            Started in 2016 as <em>"Uttaran Spastic Society"</em> and formally established on February 6, 2020 as <strong>Uttaran Special School</strong> at Dhopaghati, Berhampore, our center provides a loving, dignified sanctuary for children with neurodevelopmental and physical diversity.
           </p>
         </div>
 

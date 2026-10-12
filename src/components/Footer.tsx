@@ -10,13 +10,22 @@ export const Footer: React.FC = () => {
           {/* Col 1: School Identity */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md">
-                <HeartHandshake className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-emerald-500/40 bg-white shadow-xs shrink-0">
+                <img
+                  src="/uttaran-logo.jpg"
+                  alt="Uttaran Special School Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <span className="font-extrabold text-white text-lg tracking-tight block">
-                  UTTARAN SPECIAL SCHOOL
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-extrabold text-white text-lg tracking-tight block">
+                    UTTARAN SPECIAL SCHOOL
+                  </span>
+                  <span className="text-[11px] font-semibold text-emerald-300 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
+                    উত্তরণ
+                  </span>
+                </div>
                 <span className="text-[11px] font-semibold text-emerald-400 tracking-wider uppercase block">
                   For Differently Able • Berhampore
                 </span>
@@ -92,11 +101,20 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`tel:${schoolInfo.contacts.phonePrimary}`} className="hover:text-emerald-400 text-white font-medium">
-                  {schoolInfo.contacts.phoneFormatted}
-                </a>
+              <div className="flex flex-col gap-1 text-xs">
+                <div className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span className="text-slate-400">School Desk:</span>
+                  <a href={`tel:${schoolInfo.contacts.phonePrimary}`} className="hover:text-emerald-400 text-white font-medium">
+                    {schoolInfo.contacts.phoneFormatted}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 pl-5.5">
+                  <span className="text-slate-400">Principal:</span>
+                  <a href={`tel:${schoolInfo.contacts.phoneSecondary}`} className="hover:text-emerald-400 text-white font-medium">
+                    {schoolInfo.contacts.phoneSecondaryFormatted}
+                  </a>
+                </div>
               </div>
 
               <div className="flex items-center gap-2.5">
