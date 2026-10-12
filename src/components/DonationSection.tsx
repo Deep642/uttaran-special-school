@@ -1,369 +1,370 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, CreditCard, Heart, LockKeyhole, Smartphone, X } from 'lucide-react';
-
-const donationAmounts = [500, 1000, 2000, 5000];
-
-interface DonorDetails {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-}
+import React, { useState } from 'react';
+import {
+  Heart,
+  QrCode,
+  Building2,
+  Gift,
+  Copy,
+  Check,
+  Smartphone,
+  ExternalLink,
+  MessageCircle,
+  ShieldCheck,
+  Sparkles,
+  Palette,
+  Apple,
+  Armchair,
+  CheckCircle2
+} from 'lucide-react';
+import { donationData } from '../data/donation';
 
 export const DonationSection: React.FC = () => {
-  const [frequency, setFrequency] = useState<'once' | 'monthly'>('once');
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(500);
-  const [customAmount, setCustomAmount] = useState('');
-  const [anonymous, setAnonymous] = useState(false);
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
-  const [donor, setDonor] = useState<DonorDetails>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-  });
+  const [activeTab, setActiveTab] = useState<'upi' | 'bank' | 'inkind'>('upi');
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [selectedInKind, setSelectedInKind] = useState<string | null>(null);
 
-  const amount = customAmount.trim() ? Number(customAmount) : selectedAmount ?? 0;
-  const isValidAmount = Number.isFinite(amount) && amount > 0;
-
-  useEffect(() => {
-    if (!checkoutOpen) return;
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setCheckoutOpen(false);
-    };
-
-    window.addEventListener('keydown', closeOnEscape);
-    return () => window.removeEventListener('keydown', closeOnEscape);
-  }, [checkoutOpen]);
-
-  const selectAmount = (value: number) => {
-    setSelectedAmount(value);
-    setCustomAmount('');
+  // Quick copy helper with feedback
+  const handleCopy = (text: string, fieldName: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(fieldName);
+    setTimeout(() => setCopiedField(null), 2500);
   };
 
-  const updateDonor = (field: keyof DonorDetails, value: string) => {
-    setDonor((current) => ({ ...current, [field]: value }));
+  const getWishlistIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Sparkles':
+        return <Sparkles className="w-5 h-5 text-emerald-600" />;
+      case 'Palette':
+        return <Palette className="w-5 h-5 text-teal-600" />;
+      case 'Apple':
+        return <Apple className="w-5 h-5 text-amber-600" />;
+      case 'Armchair':
+        return <Armchair className="w-5 h-5 text-sky-600" />;
+      default:
+        return <Gift className="w-5 h-5 text-emerald-600" />;
+    }
   };
+
+  const whatsappReceiptUrl = `https://wa.me/${donationData.whatsappReceiptNumber}?text=${encodeURIComponent(
+    `Hello Uttaran Special School, I have made a contribution to support the students. Here are my details for the receipt:\n- Name:\n- Contribution Amount: ₹\n- Transaction Ref (UTR / UPI ID):\n- Date:`
+  )}`;
 
   return (
-    <section id="donate" className="scroll-mt-24 bg-gradient-to-b from-white to-emerald-50/60 py-16 sm:py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-10 max-w-2xl text-center">
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-semibold text-amber-900">
-            <Heart className="h-4 w-4" />
-            Make a difference
-          </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            Help every child flourish
+    <section id="donate" className="scroll-mt-20 py-16 sm:py-24 bg-gradient-to-b from-[#FBFBFA] via-white to-emerald-50/40 border-b border-slate-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs sm:text-sm font-bold tracking-wide uppercase mb-3 shadow-2xs">
+            <Heart className="w-4 h-4 text-emerald-700 fill-emerald-600" />
+            <span>Support Our Special Children</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            Direct Support & Contributions
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-            Your contribution supports inclusive learning, therapy resources, and everyday skills for our students.
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            100% of your generous contribution directly aids sensory therapy kits, adaptive education, and child nutrition in Berhampore with <strong className="text-slate-900">0% third-party gateway deductions</strong>.
           </p>
         </div>
 
-        <div className="mx-auto max-w-3xl rounded-3xl border border-slate-200 bg-white p-5 shadow-lg shadow-slate-900/5 sm:p-8">
-          <label className="mb-6 flex cursor-pointer items-center gap-3 text-sm font-medium text-slate-700">
-            <input
-              type="checkbox"
-              checked={anonymous}
-              onChange={(event) => setAnonymous(event.target.checked)}
-              className="h-4 w-4 rounded border-slate-300 accent-emerald-700"
-            />
-            Make my donation anonymous
-          </label>
+        {/* 3 Main Donation Modes Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+          <button
+            type="button"
+            onClick={() => setActiveTab('upi')}
+            className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              activeTab === 'upi'
+                ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20 scale-102'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            <QrCode className="w-4 h-4" />
+            <span>Direct UPI / QR Code (0% Fee)</span>
+          </button>
 
-          {anonymous ? (
-            <div>
-              <div className="mb-6 grid grid-cols-2 gap-3">
-                {([
-                  ['once', 'One-time'],
-                  ['monthly', 'Monthly'],
-                ] as const).map(([value, label]) => (
-                  <button
-                    key={value}
-                    type="button"
-                    aria-pressed={frequency === value}
-                    onClick={() => setFrequency(value)}
-                    className={`rounded-xl border px-4 py-3.5 text-left text-sm font-semibold transition-colors ${
-                      frequency === value
-                        ? 'border-emerald-700 bg-emerald-50 text-emerald-900 ring-1 ring-emerald-700'
-                        : 'border-slate-200 text-slate-600 hover:border-emerald-300'
-                    }`}
-                  >
-                    <span className={`mr-2 inline-block h-4 w-4 align-[-3px] rounded-full border ${
-                      frequency === value ? 'border-[5px] border-emerald-700' : 'border-slate-300'
-                    }`} />
-                    {label}
-                  </button>
-                ))}
-              </div>
+          <button
+            type="button"
+            onClick={() => setActiveTab('bank')}
+            className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              activeTab === 'bank'
+                ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20 scale-102'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            <Building2 className="w-4 h-4" />
+            <span>Bank Transfer (NEFT / IMPS)</span>
+          </button>
 
-              <fieldset>
-                <legend className="mb-3 text-lg font-bold text-slate-900">
-                  Choose an amount to donate
-                </legend>
-                <div className="grid grid-cols-2 gap-3">
-                  {donationAmounts.map((value) => (
-                    <button
-                      key={value}
-                      type="button"
-                      aria-pressed={!customAmount && selectedAmount === value}
-                      onClick={() => selectAmount(value)}
-                      className={`rounded-xl border px-4 py-4 text-left text-lg font-bold transition-colors ${
-                        !customAmount && selectedAmount === value
-                          ? 'border-emerald-700 bg-emerald-50 text-emerald-900 ring-1 ring-emerald-700'
-                          : 'border-slate-200 text-slate-700 hover:border-emerald-300'
-                      }`}
-                    >
-                      <span className="mr-2 text-sm font-normal">₹</span>
-                      {value.toLocaleString('en-IN')}
-                    </button>
-                  ))}
-                </div>
-                <label className="sr-only" htmlFor="anonymous-donation-amount">Other donation amount in rupees</label>
-                <div className={`mt-3 flex items-center rounded-xl border px-4 ${
-                  customAmount ? 'border-emerald-700 ring-1 ring-emerald-700' : 'border-slate-200'
-                }`}>
-                  <span className="text-slate-500">₹</span>
-                  <input
-                    id="anonymous-donation-amount"
-                    type="number"
-                    min="1"
-                    step="1"
-                    inputMode="numeric"
-                    placeholder="Other amount"
-                    value={customAmount}
-                    onChange={(event) => {
-                      setCustomAmount(event.target.value);
-                      setSelectedAmount(null);
-                    }}
-                    className="w-full border-0 bg-transparent px-3 py-4 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:ring-0"
+          <button
+            type="button"
+            onClick={() => setActiveTab('inkind')}
+            className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              activeTab === 'inkind'
+                ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20 scale-102'
+                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            <Gift className="w-4 h-4" />
+            <span>Sponsor a Need (In-Kind Wishlist)</span>
+          </button>
+        </div>
+
+        {/* Main Content Card Container */}
+        <div className="max-w-4xl mx-auto bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-10 mb-12">
+          {/* TAB 1: DIRECT UPI & QR CODE */}
+          {activeTab === 'upi' && (
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              {/* QR Code Container */}
+              <div className="md:col-span-5 flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="p-2.5 bg-white rounded-xl shadow-xs border border-slate-200 mb-3">
+                  <img
+                    src={donationData.upiQrUrl}
+                    alt="Uttaran Special School UPI QR Code"
+                    className="w-48 h-48 sm:w-52 sm:h-52 object-contain"
+                    loading="lazy"
                   />
                 </div>
-              </fieldset>
-
-              <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-5">
-                <span className="text-sm font-semibold text-slate-700">Total donation</span>
-                <span className="text-xl font-extrabold text-slate-900">
-                  ₹{isValidAmount ? amount.toLocaleString('en-IN') : '0'}
-                  {frequency === 'monthly' && <span className="text-sm font-medium text-slate-500"> / month</span>}
+                <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+                  <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
+                  Scan with any UPI App
+                </span>
+                <span className="text-[11px] text-slate-500 mt-0.5">
+                  GPay • PhonePe • Paytm • BHIM • Cred
                 </span>
               </div>
 
-              <button
-                type="button"
-                disabled={!isValidAmount}
-                onClick={() => setCheckoutOpen(true)}
-                className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-emerald-800 disabled:cursor-not-allowed disabled:bg-slate-300"
-              >
-                Continue
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-          ) : (
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                setCheckoutOpen(true);
-              }}
-            >
-              <fieldset>
-                <legend className="mb-3 text-lg font-bold text-indigo-900">
-                  Choose an amount to donate
-                </legend>
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                  {donationAmounts.map((value) => (
-                    <button
-                      key={value}
-                      type="button"
-                      aria-pressed={!customAmount && selectedAmount === value}
-                      onClick={() => selectAmount(value)}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-3 text-left text-base font-semibold transition-colors ${
-                        !customAmount && selectedAmount === value
-                          ? 'border-emerald-700 bg-emerald-50 text-emerald-900 ring-1 ring-emerald-700'
-                          : 'border-slate-300 text-slate-600 hover:border-emerald-400'
-                      }`}
-                    >
-                      <span className={`inline-block h-4 w-4 shrink-0 rounded-full border ${
-                        !customAmount && selectedAmount === value
-                          ? 'border-[5px] border-emerald-700'
-                          : 'border-slate-300'
-                      }`} />
-                      ₹{value.toLocaleString('en-IN')}
-                    </button>
-                  ))}
+              {/* UPI Details & Mobile Deep Link */}
+              <div className="md:col-span-7 space-y-5">
+                <div>
+                  <span className="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
+                    Instant Bank Transfer
+                  </span>
+                  <h3 className="text-2xl font-extrabold text-slate-900 mt-2">
+                    Pay Directly via UPI
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                    No middlemen or payment gateway fees. Contributions directly reach the school's State Bank of India institutional account.
+                  </p>
                 </div>
-                <label className="sr-only" htmlFor="donation-amount">Other donation amount in rupees</label>
-                <input
-                  id="donation-amount"
-                  type="number"
-                  min="1"
-                  step="1"
-                  inputMode="numeric"
-                  placeholder="Other Amount"
-                  value={customAmount}
-                  onChange={(event) => {
-                    setCustomAmount(event.target.value);
-                    setSelectedAmount(null);
-                  }}
-                  className="mt-3 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
-                />
-              </fieldset>
 
-              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <label className="block text-sm font-medium text-indigo-900">
-                  First Name<span className="text-red-600">*</span>
-                  <input
-                    autoComplete="given-name"
-                    placeholder="First Name"
-                    required
-                    value={donor.firstName}
-                    onChange={(event) => updateDonor('firstName', event.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
-                  />
-                </label>
-                <label className="block text-sm font-medium text-indigo-900">
-                  Last Name<span className="text-red-600">*</span>
-                  <input
-                    autoComplete="family-name"
-                    placeholder="Last Name"
-                    required
-                    value={donor.lastName}
-                    onChange={(event) => updateDonor('lastName', event.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
-                  />
-                </label>
-                <label className="block text-sm font-medium text-indigo-900">
-                  Email<span className="text-red-600">*</span>
-                  <input
-                    type="email"
-                    autoComplete="email"
-                    placeholder="Email"
-                    required
-                    value={donor.email}
-                    onChange={(event) => updateDonor('email', event.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
-                  />
-                </label>
-                <label className="block text-sm font-medium text-indigo-900">
-                  Mobile Number<span className="text-red-600">*</span>
-                  <input
-                    type="tel"
-                    autoComplete="tel"
-                    inputMode="tel"
-                    placeholder="Mobile Number"
-                    required
-                    value={donor.phone}
-                    onChange={(event) => updateDonor('phone', event.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 outline-none placeholder:text-slate-400 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
-                  />
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                disabled={!isValidAmount}
-                className="mx-auto mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-amber-400 px-8 py-3.5 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-500 disabled:cursor-not-allowed disabled:bg-slate-300 sm:w-60"
-              >
-                Continue
-              </button>
-              <p className="mt-3 text-center text-xs text-slate-500">
-                This preview does not submit or store your details.
-              </p>
-            </form>
-          )}
-        </div>
-      </div>
-
-      {checkoutOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/60 sm:items-center sm:p-5"
-          onClick={(event) => {
-            if (event.target === event.currentTarget) setCheckoutOpen(false);
-          }}
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="donation-checkout-title"
-            className="w-full max-w-lg rounded-t-3xl bg-white p-6 shadow-2xl sm:rounded-3xl"
-          >
-            <div className="flex items-start justify-between border-b border-slate-100 pb-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Razorpay checkout preview</p>
-                <h3 id="donation-checkout-title" className="mt-1 text-2xl font-extrabold text-slate-900">
-                  Pay ₹{amount.toLocaleString('en-IN')}
-                </h3>
-              </div>
-              <button
-                type="button"
-                aria-label="Close checkout preview"
-                onClick={() => setCheckoutOpen(false)}
-                className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <div className="py-5">
-              <div className="rounded-2xl border border-slate-200 p-4 sm:p-5">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-950 text-white">
-                      <LockKeyhole className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="font-extrabold tracking-tight text-slate-900">Razorpay</p>
-                      <p className="text-xs text-slate-500">Payment gateway</p>
-                    </div>
+                {/* Copy UPI ID Box */}
+                <div className="p-4 rounded-xl bg-[#F8FAF9] border border-emerald-200/80 space-y-2">
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <span className="font-semibold uppercase tracking-wider text-emerald-800">Official UPI ID:</span>
+                    <span>Payee: {donationData.payeeName}</span>
                   </div>
-                  <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-900">
-                    Setup pending
+                  <div className="flex items-center justify-between gap-3 bg-white p-3 rounded-lg border border-slate-200 shadow-2xs">
+                    <code className="text-sm sm:text-base font-bold text-slate-900 tracking-wide break-all">
+                      {donationData.upiId}
+                    </code>
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(donationData.upiId, 'upiId')}
+                      className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-md text-xs font-semibold transition-colors cursor-pointer"
+                    >
+                      {copiedField === 'upiId' ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-700" />
+                          <span className="text-emerald-700 font-bold">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Copy ID</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Mobile Pay Directly Link */}
+                <div className="pt-2">
+                  <a
+                    href={`upi://pay?pa=${donationData.upiId}&pn=${encodeURIComponent(donationData.payeeName)}&cu=INR`}
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white rounded-xl font-bold text-sm shadow-md shadow-emerald-700/20 transition-all"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                    <span>Open in UPI App (Mobile Only)</span>
+                  </a>
+                  <p className="text-[11px] text-slate-500 text-center mt-2">
+                    Works on smartphone browsers with Google Pay, PhonePe, or Paytm installed.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: BANK TRANSFER (NEFT / RTGS / IMPS) */}
+          {activeTab === 'bank' && (
+            <div className="space-y-6">
+              <div>
+                <span className="px-2.5 py-1 rounded-md bg-teal-100 text-teal-900 text-xs font-bold uppercase tracking-wider">
+                  Direct Institutional Account
+                </span>
+                <h3 className="text-2xl font-extrabold text-slate-900 mt-2">
+                  Bank Transfer Details (NEFT / RTGS / IMPS)
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                  Recommended for family endowments, community well-wishers, and local businesses making direct bank transfers.
+                </p>
+              </div>
+
+              {/* Bank Details Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider block font-medium">Account Name</span>
+                  <span className="text-sm font-bold text-slate-900 mt-1 block">
+                    {donationData.bankDetails.accountName}
                   </span>
                 </div>
 
-                <div className="mt-5 border-t border-slate-100 pt-4">
-                  <p className="text-sm font-semibold text-slate-800">Payment methods planned</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">
-                      <Smartphone className="h-4 w-4 text-emerald-700" />
-                      UPI
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">
-                      <CreditCard className="h-4 w-4 text-slate-700" />
-                      Cards
-                    </span>
-                    <span className="rounded-lg bg-slate-50 px-3 py-2 text-xs font-medium text-slate-600">
-                      Net banking
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs text-slate-500 uppercase tracking-wider block font-medium">Account Number</span>
+                    <span className="text-sm font-mono font-bold text-slate-900 mt-1 block">
+                      {donationData.bankDetails.accountNumber}
                     </span>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy(donationData.bankDetails.accountNumber, 'accNo')}
+                    className="p-2 bg-white hover:bg-slate-100 text-slate-700 rounded-lg border border-slate-200 text-xs font-medium transition-colors cursor-pointer"
+                    title="Copy Account Number"
+                  >
+                    {copiedField === 'accNo' ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                  </button>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider block font-medium">Bank & Branch</span>
+                  <span className="text-sm font-bold text-slate-900 mt-1 block">
+                    {donationData.bankDetails.bankName}
+                  </span>
+                  <span className="text-xs text-slate-600 block mt-0.5">
+                    {donationData.bankDetails.branch}
+                  </span>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs text-slate-500 uppercase tracking-wider block font-medium">IFSC Code</span>
+                    <span className="text-sm font-mono font-bold text-emerald-900 mt-1 block">
+                      {donationData.bankDetails.ifscCode}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy(donationData.bankDetails.ifscCode, 'ifsc')}
+                    className="p-2 bg-white hover:bg-slate-100 text-slate-700 rounded-lg border border-slate-200 text-xs font-medium transition-colors cursor-pointer"
+                    title="Copy IFSC Code"
+                  >
+                    {copiedField === 'ifsc' ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Cheque / In-Person Note */}
+              <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs text-amber-900 flex items-start gap-3">
+                <Building2 className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
+                <div>
+                  <strong className="font-semibold block text-amber-950">Donations via Account Payee Cheque:</strong>
+                  Cheques should be drawn in favor of <em>"{donationData.chequePayableTo}"</em> and can be handed over at our school office in Raninagar, Berhampore.
                 </div>
               </div>
             </div>
+          )}
 
-            <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
-              <div className="flex items-start gap-2.5">
-                <LockKeyhole className="mt-0.5 h-4 w-4 shrink-0 text-amber-800" />
-                <p className="text-sm leading-relaxed text-amber-950">
-                  This is a preview only. Uttaran’s Razorpay account is not connected, so payments cannot be made here yet.
+          {/* TAB 3: SPONSOR A NEED (IN-KIND WISHLIST) */}
+          {activeTab === 'inkind' && (
+            <div className="space-y-6">
+              <div>
+                <span className="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
+                  Material & Program Sponsorship
+                </span>
+                <h3 className="text-2xl font-extrabold text-slate-900 mt-2">
+                  Sponsor a Child's Concrete Need
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                  Prefer directly contributing educational or therapy materials rather than cash? Choose a specific need below to sponsor directly or deliver to campus:
                 </p>
               </div>
+
+              {/* Wishlist Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {donationData.inKindWishlist.map((item) => (
+                  <div
+                    key={item.id}
+                    className={`p-5 rounded-2xl border transition-all ${
+                      selectedInKind === item.id
+                        ? 'border-emerald-500 bg-emerald-50/40 shadow-xs'
+                        : 'border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+                        {getWishlistIcon(item.icon)}
+                      </div>
+                      <span className="text-xs font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full">
+                        {item.estimatedCost}
+                      </span>
+                    </div>
+
+                    <h4 className="text-sm font-bold text-slate-900 mb-1">{item.title}</h4>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4">{item.description}</p>
+
+                    <a
+                      href={`https://wa.me/${donationData.whatsappReceiptNumber}?text=${encodeURIComponent(
+                        `Hello Uttaran Special School, I would like to sponsor or contribute towards: "${item.title}". Please guide me on delivery or procurement.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline"
+                    >
+                      <span>Sponsor this item via WhatsApp</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
-            <button
-              type="button"
-              disabled
-              className="mt-5 w-full cursor-not-allowed rounded-xl bg-slate-200 px-5 py-3.5 text-sm font-bold text-slate-500"
+          )}
+        </div>
+
+        {/* RECEIPT & INTIMATION BANNER */}
+        <div className="max-w-4xl mx-auto rounded-3xl bg-gradient-to-r from-emerald-800 to-teal-800 text-white p-6 sm:p-8 shadow-md">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="space-y-1.5 max-w-xl">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-200 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-300" />
+                Receipt & Acknowledgment
+              </span>
+              <h4 className="text-xl font-bold text-white">
+                Already made a contribution?
+              </h4>
+              <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+                Send us your transaction screenshot or reference number (UTR / UPI ID) on WhatsApp, and our coordinator will issue an official school acknowledgment letter.
+              </p>
+            </div>
+
+            <a
+              href={whatsappReceiptUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-100 active:scale-95 text-emerald-900 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all self-stretch md:self-auto text-center cursor-pointer"
             >
-              Razorpay setup required
-            </button>
-            <p className="mt-3 text-center text-xs text-slate-500">
-              {anonymous ? 'Anonymous donation' : `Donor: ${donor.firstName} ${donor.lastName}`.trim()}
-              {frequency === 'monthly' && anonymous ? ' · Monthly' : ''}
-            </p>
+              <MessageCircle className="w-4 h-4 text-emerald-700" />
+              <span>Send Screenshot on WhatsApp</span>
+            </a>
           </div>
         </div>
-      )}
+
+        {/* Transparency & Dignity Safeguard */}
+        <div className="max-w-4xl mx-auto mt-6 flex items-center gap-2.5 text-xs text-slate-500 justify-center text-center">
+          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+          <span>
+            Uttaran Special School is a community-driven institution in Berhampore. All contributions are documented with official receipts.
+          </span>
+        </div>
+      </div>
     </section>
   );
 };

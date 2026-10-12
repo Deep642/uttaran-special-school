@@ -20,6 +20,8 @@ export const Navbar: React.FC = () => {
     { label: "Faculty & Staff", href: "#team" },
     { label: "Alumni Pride", href: "#alumni" },
     { label: "Campus Gallery", href: "#gallery" },
+    { label: "Support & Donate", href: "#donate" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
