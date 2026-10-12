@@ -63,7 +63,7 @@ export const Navbar: React.FC = () => {
               aria-label="Make a donation"
               className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-amber-400 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-bold text-slate-950 shadow-xs transition-colors hover:bg-amber-500"
             >
-              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-rose-500 text-rose-500" />
+              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-emerald-700 text-emerald-700" />
               <span>Donation</span>
             </a>
 
