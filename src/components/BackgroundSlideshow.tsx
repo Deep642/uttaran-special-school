@@ -26,6 +26,16 @@ const bgSlides = [
     title: '1:1 Life-Skill & Math Guidance',
     accent: 'from-emerald-500/10 via-sky-500/10 to-amber-500/10',
   },
+  {
+    url: '/gallery/craft-cotton-swan.jpg',
+    title: 'Tactile Cotton Craft Work',
+    accent: 'from-rose-500/10 via-amber-500/10 to-sky-500/10',
+  },
+  {
+    url: '/gallery/craft-clay-mandala.jpg',
+    title: 'Color Clay Mandala Creation',
+    accent: 'from-amber-500/10 via-emerald-500/10 to-rose-500/10',
+  },
 ];
 
 export const BackgroundSlideshow: React.FC = () => {

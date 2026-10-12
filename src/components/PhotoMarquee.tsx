@@ -73,6 +73,16 @@ const marqueePhotos: PhotoItem[] = [
     bengaliTag: "বার্ষিক ক্রীড়ার বর্ণাঢ্য উদ্বোধনী মঞ্চ",
   },
   {
+    src: "/gallery/craft-cotton-swan.jpg",
+    title: "Tactile Cotton Wool Craft & Swan Art",
+    bengaliTag: "তুলা ও আঠায় রাজহাঁস তৈরি",
+  },
+  {
+    src: "/gallery/craft-clay-mandala.jpg",
+    title: "Color Clay Dough Geometric Mandala Plate",
+    bengaliTag: "রঙিন ক্লে দিয়ে নকশা ও শিল্প",
+  },
+  {
     src: "/gallery/school-media-18.jpg",
     title: "Calm Corner & Emotional Grounding",
     bengaliTag: "আবেগ নিয়ন্ত্রণ ও প্রশান্তি",

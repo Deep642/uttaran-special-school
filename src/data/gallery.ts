@@ -238,4 +238,26 @@ export const galleryItems: GalleryItem[] = [
     bengaliDescription: "হলুদ সাজে হারমোনিয়ামের সুরে শিক্ষক ও শিক্ষার্থীদের সম্মিলিত সুর ও আনন্দঘন মুহূর্ত।",
     imageUrl: "/gallery/cultural-music-harmonium.jpg",
   },
+
+  // --- HANDICRAFTS, ART & CREATIVE EXPRESSION ---
+  {
+    id: "c1-cotton-swan",
+    title: "Tactile Cotton Wool Craft & Swan Art",
+    bengaliTitle: "তুলা ও আঠার সাহায্যে রাজহাঁস তৈরি",
+    category: "crafts",
+    categoryLabel: "Crafts & Art",
+    description: "Hands-on tactile collage where students gently apply fluffy cotton balls with glue onto hand-drawn bird sketches, refining sensory touch and finger motor control.",
+    bengaliDescription: "হাঁসের স্কেচে তুলো ও আঠা বসিয়ে নরম স্পর্শানুভূতি ও আঙুলের সূক্ষ্ম সমন্বয় বৃদ্ধির সৃজনশীল পাঠ।",
+    imageUrl: "/gallery/craft-cotton-swan.jpg",
+  },
+  {
+    id: "c2-clay-mandala",
+    title: "Color Clay Dough Geometric Mandala Plate",
+    bengaliTitle: "রঙিন ক্লে দিয়ে জ্যামিতিক নকশা ও ম্যান্ডালা শিল্প",
+    category: "crafts",
+    categoryLabel: "Crafts & Art",
+    description: "Students rolling and shaping vibrant colored clay strips into concentric circular geometric patterns, encouraging spatial awareness, shape recognition, and artistic confidence.",
+    bengaliDescription: "থালায় রঙিন ক্লে দিয়ে গোল ও ত্রিকোণ নকশা তৈরি, যা চোখের দৃষ্টি ও হাতের নিখুঁত সামঞ্জস্য গড়ে তোলে।",
+    imageUrl: "/gallery/craft-clay-mandala.jpg",
+  },
 ];
