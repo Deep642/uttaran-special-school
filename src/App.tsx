@@ -7,6 +7,7 @@ import { Programs } from './components/Programs';
 import { TeamSection } from './components/TeamSection';
 import { AlumniSection } from './components/AlumniSection';
 import { GallerySection } from './components/GallerySection';
+import { BrochureDownloads } from './components/BrochureDownloads';
 import { DonationSection } from './components/DonationSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -33,6 +34,7 @@ export const App: React.FC = () => {
         <PhotoMarquee />
         <About />
         <Programs />
+        <BrochureDownloads />
         <TeamSection />
         {/* <AlumniSection /> (Temporarily paused as requested) */}
         <GallerySection />

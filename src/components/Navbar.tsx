@@ -17,6 +17,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { label: "About Us", href: "#about" },
     { label: "Programs", href: "#programs" },
+    { label: "Brochures", href: "#brochures" },
     { label: "Faculty & Staff", href: "#team" },
     // { label: "Alumni Pride", href: "#alumni" },
     { label: "Campus Gallery", href: "#gallery" },

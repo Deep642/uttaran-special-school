@@ -63,6 +63,11 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a href="#brochures" className="hover:text-emerald-400 transition-colors">
+                  Download Brochures & Souvenirs
+                </a>
+              </li>
+              <li>
                 <a href="#team" className="hover:text-emerald-400 transition-colors">
                   Leadership & Faculty
                 </a>
