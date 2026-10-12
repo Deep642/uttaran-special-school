@@ -32,6 +32,25 @@ export const Hero: React.FC = () => {
 
           {/* Call to action buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
+            {/* Direct Mobile Quick Actions (Immediately visible on phones above the fold) */}
+            <div className="grid grid-cols-2 gap-2.5 w-full sm:hidden">
+              <a
+                href={`tel:${schoolInfo.contacts.phonePrimary}`}
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-3 bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md shadow-emerald-700/20"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call School</span>
+              </a>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-3 bg-white active:scale-95 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 shadow-xs"
+              >
+                <MapPin className="w-3.5 h-3.5 text-teal-600" />
+                <span>Contact Us</span>
+              </a>
+            </div>
+
             <a
               href="#programs"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 active:scale-95 text-white font-semibold text-sm sm:text-base rounded-xl shadow-md shadow-emerald-700/20 hover:shadow-lg transition-all"
@@ -42,7 +61,7 @@ export const Hero: React.FC = () => {
 
             <a
               href={`tel:${schoolInfo.contacts.phonePrimary}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 active:scale-95 text-slate-800 font-semibold text-sm sm:text-base rounded-xl border border-slate-300/80 shadow-xs hover:border-emerald-300 transition-all"
+              className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 active:scale-95 text-slate-800 font-semibold text-sm sm:text-base rounded-xl border border-slate-300/80 shadow-xs hover:border-emerald-300 transition-all"
             >
               <Phone className="w-4 h-4 text-emerald-600" />
               <span>Call Us: {schoolInfo.contacts.phoneFormatted}</span>
@@ -52,7 +71,7 @@ export const Hero: React.FC = () => {
               href={schoolInfo.mapDirectLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-teal-50 hover:bg-teal-100/80 active:scale-95 text-teal-900 font-semibold text-sm sm:text-base rounded-xl border border-teal-200/90 transition-all"
+              className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-teal-50 hover:bg-teal-100/80 active:scale-95 text-teal-900 font-semibold text-sm sm:text-base rounded-xl border border-teal-200/90 transition-all"
             >
               <MapPin className="w-4 h-4 text-teal-600" />
               <span>Locate on Map</span>

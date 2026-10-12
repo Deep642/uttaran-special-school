@@ -56,33 +56,44 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Quick Call Button (Always visible on mobile & desktop) */}
             <a
-              href="#donate"
-              aria-label="Donate now"
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-amber-400 px-2.5 py-2 text-[10px] font-bold text-slate-950 shadow-sm transition-colors hover:bg-amber-500 sm:px-3.5 sm:text-xs"
+              href={`tel:${schoolInfo.contacts.phonePrimary}`}
+              aria-label="Call school directly"
+              className="inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-50 border border-emerald-200/90 px-2 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition-colors shadow-2xs"
             >
-              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              <span>Donate now</span>
+              <Phone className="h-3.5 w-3.5 text-emerald-700" />
+              <span>Call</span>
             </a>
 
+            {/* Contact Us button (Always visible on mobile & desktop) */}
             <a
               href="#contact"
               aria-label="Contact us"
-              className="hidden items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 transition-colors hover:border-emerald-300 hover:bg-emerald-50 lg:inline-flex"
+              className="inline-flex items-center justify-center gap-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors hover:border-emerald-300 hover:bg-emerald-50 shadow-2xs"
             >
-              <Phone className="h-4 w-4 text-emerald-700" />
-              <span>Contact us</span>
+              <span>Contact</span>
             </a>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Navigation Menu"
-            className="lg:hidden rounded-lg p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-          >
-            {mobileMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
-          </button>
+            {/* Donate Now Button */}
+            <a
+              href="#donate"
+              aria-label="Donate now"
+              className="inline-flex items-center justify-center gap-1 rounded-lg bg-amber-400 px-2 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs font-bold text-slate-950 shadow-xs transition-colors hover:bg-amber-500"
+            >
+              <Heart className="h-3.5 w-3.5" />
+              <span className="hidden xs:inline">Donate</span>
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Navigation Menu"
+              className="lg:hidden rounded-lg p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+            </button>
           </div>
         </div>
       </div>
