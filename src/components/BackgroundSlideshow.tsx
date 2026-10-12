@@ -44,7 +44,7 @@ export const BackgroundSlideshow: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % bgSlides.length);
-    }, 7000); // Transitions smoothly every 7 seconds
+    }, 4500); // Transitions briskly every 4.5 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -56,13 +56,13 @@ export const BackgroundSlideshow: React.FC = () => {
       {bgSlides.map((slide, idx) => (
         <div
           key={slide.url}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
             idx === currentIdx ? 'opacity-100' : 'opacity-0'
           }`}
         >
           {/* High-visibility photo: vivid on mobile (75% opacity), balanced on desktop (50% opacity) */}
           <div
-            className="w-full h-full bg-cover bg-center transition-transform duration-[12000ms] ease-out scale-102 opacity-75 sm:opacity-50"
+            className="w-full h-full bg-cover bg-center transition-transform duration-[6000ms] ease-out scale-102 opacity-75 sm:opacity-50"
             style={{
               backgroundImage: `url(${slide.url})`,
               filter: 'saturate(1.25) contrast(1.1)',
