@@ -11,9 +11,9 @@ export const Hero: React.FC = () => {
       <div className="absolute -bottom-10 right-1/4 w-72 h-72 bg-amber-300/15 rounded-full blur-2xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto p-4 sm:p-0 rounded-3xl bg-white/60 sm:bg-transparent backdrop-blur-xs sm:backdrop-blur-none border border-white/80 sm:border-transparent shadow-sm sm:shadow-none">
           {/* Top Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs sm:text-sm font-semibold mb-5 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-slate-200/90 text-slate-800 text-xs sm:text-sm font-semibold mb-5 shadow-2xs">
             <div className="flex -space-x-1">
               <span className="w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-white" />
               <span className="w-2.5 h-2.5 rounded-full bg-sky-500 ring-2 ring-white" />
@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
           </p>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
             Situated at Dhopaghati, Berhampore, <strong>Uttaran Special School</strong> nurtures children through individualized therapies (IEP), speech and occupational development, and cheerful community inclusion.
           </p>
 

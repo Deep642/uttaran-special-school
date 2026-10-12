@@ -60,30 +60,29 @@ export const BackgroundSlideshow: React.FC = () => {
             idx === currentIdx ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          {/* Crisp, clear photo with natural contrast and no blur */}
+          {/* High-visibility photo: vivid on mobile (75% opacity), balanced on desktop (50% opacity) */}
           <div
-            className="w-full h-full bg-cover bg-center transition-transform duration-[12000ms] ease-out scale-102"
+            className="w-full h-full bg-cover bg-center transition-transform duration-[12000ms] ease-out scale-102 opacity-75 sm:opacity-50"
             style={{
               backgroundImage: `url(${slide.url})`,
-              filter: 'saturate(1.2) contrast(1.08)',
-              opacity: 0.45,
+              filter: 'saturate(1.25) contrast(1.1)',
             }}
           />
-          {/* Subtle logo-palette tint */}
+          {/* Subtle logo-palette vibrant tint */}
           <div
-            className={`absolute inset-0 bg-gradient-to-br ${slide.accent} mix-blend-color-burn opacity-70`}
+            className={`absolute inset-0 bg-gradient-to-br ${slide.accent} mix-blend-color-burn opacity-80`}
           />
         </div>
       ))}
 
-      {/* Radiant ambient glow orbs */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-rose-400/20 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[550px] h-[550px] bg-sky-400/20 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute top-2/3 left-10 w-[550px] h-[550px] bg-amber-400/20 rounded-full blur-[90px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-emerald-400/20 rounded-full blur-[90px] pointer-events-none" />
+      {/* Radiant ambient glow orbs across the screen */}
+      <div className="absolute top-0 left-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-rose-400/30 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/3 -right-10 w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] bg-sky-400/30 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-2/3 -left-10 w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] bg-amber-400/30 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-emerald-400/30 rounded-full blur-[80px] pointer-events-none" />
 
-      {/* Clean, light gradient wash preserving photo clarity without washing out */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-white/20 to-white/35" />
+      {/* Gentle gradient wash: minimal on mobile (white/10) so the background photos pop brightly */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/10 sm:from-white/30 sm:via-white/15 sm:to-white/30" />
     </div>
   );
 };
