@@ -56,24 +56,15 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-1 sm:gap-2">
-            {/* Contact Us button (Always visible on mobile & desktop) */}
-            <a
-              href="#contact"
-              aria-label="Contact us"
-              className="inline-flex items-center justify-center gap-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors hover:border-emerald-300 hover:bg-emerald-50 shadow-2xs"
-            >
-              <span>Contact</span>
-            </a>
-
-            {/* Donate Now Button */}
+          <div className="flex items-center gap-2">
+            {/* Donation Button with Love/Heart Icon */}
             <a
               href="#donate"
-              aria-label="Donate now"
-              className="inline-flex items-center justify-center gap-1 rounded-lg bg-amber-400 px-2 py-1.5 sm:px-3 sm:py-2 text-[11px] sm:text-xs font-bold text-slate-950 shadow-xs transition-colors hover:bg-amber-500"
+              aria-label="Make a donation"
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-amber-400 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-bold text-slate-950 shadow-xs transition-colors hover:bg-amber-500"
             >
-              <Heart className="h-3.5 w-3.5" />
-              <span className="hidden xs:inline">Donate</span>
+              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-rose-500 text-rose-500" />
+              <span>Donation</span>
             </a>
 
             {/* Mobile Menu Button */}
