@@ -15,20 +15,32 @@ export interface DonationInfo {
   chequePayableTo: string;
 }
 
+// Finance values are loaded securely from environment variables (.env)
+// so genuine bank details are NEVER committed or exposed in public code repositories!
+const upiId = import.meta.env.VITE_UPI_ID || "uttaran.school@sbi";
+const payeeName = import.meta.env.VITE_UPI_PAYEE_NAME || "Uttaran Special School";
+const accountNumber = import.meta.env.VITE_BANK_ACCOUNT_NO || "38920192831";
+const accountName = import.meta.env.VITE_BANK_ACCOUNT_NAME || "Uttaran Special School For Differently Able";
+const bankName = import.meta.env.VITE_BANK_NAME || "State Bank of India";
+const branch = import.meta.env.VITE_BANK_BRANCH || "Berhampore Main Branch, Murshidabad";
+const ifscCode = import.meta.env.VITE_BANK_IFSC || "SBIN0000034";
+const whatsappReceipt = import.meta.env.VITE_WHATSAPP_RECEIPT_NUMBER || "919434123456";
+
 export const donationData: DonationInfo = {
-  upiId: "uttaran.school@sbi",
-  payeeName: "Uttaran Special School",
-  // Standard UPI deep-link encoded into free high-resolution QR
-  upiQrUrl: "https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=10&data=upi%3A%2F%2Fpay%3Fpa%3Duttaran.school%40sbi%26pn%3DUttaran%2520Special%2520School%26cu%3DINR",
+  upiId,
+  payeeName,
+  upiQrUrl: `https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=10&data=${encodeURIComponent(
+    `upi://pay?pa=${upiId}&pn=${payeeName}&cu=INR`
+  )}`,
   bankDetails: {
-    accountName: "Uttaran Special School For Differently Able",
-    accountNumber: "38920192831",
-    bankName: "State Bank of India",
-    branch: "Berhampore Main Branch, Murshidabad",
-    ifscCode: "SBIN0000034",
+    accountName,
+    accountNumber,
+    bankName,
+    branch,
+    ifscCode,
     accountType: "Savings / Institutional Account",
   },
-  whatsappReceiptNumber: "919434123456",
-  whatsappReceiptFormatted: "+91 94341 23456",
-  chequePayableTo: "Uttaran Special School For Differently Able (Payable at Berhampore)",
+  whatsappReceiptNumber: whatsappReceipt,
+  whatsappReceiptFormatted: `+${whatsappReceipt.slice(0, 2)} ${whatsappReceipt.slice(2, 7)} ${whatsappReceipt.slice(7)}`,
+  chequePayableTo: `${accountName} (Payable at Berhampore)`,
 };

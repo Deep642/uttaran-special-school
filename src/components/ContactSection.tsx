@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ExternalLink, AlertCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle2, ExternalLink, AlertCircle } from 'lucide-react';
 import { schoolInfo } from '../data/schoolInfo';
 
 export const ContactSection: React.FC = () => {
@@ -13,17 +13,36 @@ export const ContactSection: React.FC = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState('');
+
+  const whatsappInquiryNumber = import.meta.env.VITE_WHATSAPP_INQUIRY_NUMBER || "919434123456";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
-    // Simulated static form submit (can be linked directly to https://api.web3forms.com/submit)
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    // Clean formatted message for WhatsApp
+    const messageLines = [
+      `*New Admission / School Inquiry* - Uttaran Special School`,
+      `----------------------------------------`,
+      `👤 *Parent / Guardian*: ${formData.parentName.trim()}`,
+      `📞 *Contact Phone*: ${formData.phone.trim()}`,
+      `👶 *Child's Age*: ${formData.childAge.trim() || 'Not specified'}`,
+      `📧 *Email*: ${formData.email.trim() || 'Not specified'}`,
+      `🎯 *Area of Need / Wing*: ${formData.interestWing}`,
+      `📝 *Message / Notes*:`,
+      `${formData.message.trim() || 'No additional notes provided.'}`,
+      `----------------------------------------`,
+      `_Sent via Uttaran Special School Website_`,
+    ];
+
+    const fullMessage = messageLines.join('\n');
+    const whatsappUrl = `https://wa.me/${whatsappInquiryNumber}?text=${encodeURIComponent(fullMessage)}`;
+    setLastWhatsAppUrl(whatsappUrl);
+
+    // Open WhatsApp in a new tab / mobile app
+    window.open(whatsappUrl, '_blank');
+
+    setSubmitted(true);
   };
 
   return (
@@ -143,7 +162,7 @@ export const ContactSection: React.FC = () => {
               Send an Admission or General Inquiry
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
-              Fill out this quick form, and our coordinator will reach out to understand your child's needs or schedule a gentle campus assessment.
+              Fill out this form, and clicking submit will directly forward your child's inquiry to our school coordinator via WhatsApp.
             </p>
 
             {submitted ? (
@@ -151,26 +170,40 @@ export const ContactSection: React.FC = () => {
                 <div className="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h4 className="text-lg font-bold text-emerald-900">Message Received With Care</h4>
+                <h4 className="text-lg font-bold text-emerald-900">Inquiry Ready on WhatsApp</h4>
                 <p className="text-xs sm:text-sm text-emerald-800 leading-relaxed max-w-md mx-auto">
-                  Thank you, <strong>{formData.parentName || 'Parent'}</strong>. We have logged your inquiry regarding the <strong>{formData.interestWing}</strong> wing. We will get in touch shortly via <strong>{formData.phone}</strong>.
+                  Thank you, <strong>{formData.parentName || 'Parent'}</strong>. Your inquiry for the <strong>{formData.interestWing}</strong> wing has been prepared for WhatsApp.
                 </p>
-                <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setFormData({
-                      parentName: '',
-                      phone: '',
-                      email: '',
-                      childAge: '',
-                      interestWing: 'Early Intervention & Sensory',
-                      message: '',
-                    });
-                  }}
-                  className="mt-4 px-5 py-2.5 bg-emerald-700 text-white rounded-xl text-xs font-semibold hover:bg-emerald-800 transition-colors cursor-pointer"
-                >
-                  Send Another Inquiry
-                </button>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                  {lastWhatsAppUrl && (
+                    <a
+                      href={lastWhatsAppUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-semibold shadow-xs transition-colors"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Re-open WhatsApp Chat</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        parentName: '',
+                        phone: '',
+                        email: '',
+                        childAge: '',
+                        interestWing: 'Early Intervention & Sensory',
+                        message: '',
+                      });
+                    }}
+                    className="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 rounded-xl text-xs font-semibold hover:bg-slate-50 transition-colors cursor-pointer"
+                  >
+                    Send Another Inquiry
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -240,11 +273,11 @@ export const ContactSection: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, interestWing: e.target.value })}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all cursor-pointer"
                     >
-                      <option value="Early Intervention & Sensory">Early Intervention & Sensory (Ages 3-7)</option>
-                      <option value="Functional Literacy & AAC">Functional Literacy & AAC (Ages 7-12)</option>
-                      <option value="Daily Living Skills (ADL)">Daily Living Skills (ADL) (Ages 12-16)</option>
-                      <option value="Vocational & Craft Training">Vocational & Craft Training (Ages 16+)</option>
-                      <option value="General Consultation">General Consultation / Visit Verification</option>
+                      <option value="Early Intervention & Sensory (Ages 3-7)">Early Intervention & Sensory (Ages 3-7)</option>
+                      <option value="Functional Literacy & AAC (Ages 7-12)">Functional Literacy & AAC (Ages 7-12)</option>
+                      <option value="Daily Living Skills / ADL (Ages 12-16)">Daily Living Skills / ADL (Ages 12-16)</option>
+                      <option value="Vocational & Craft Training (Ages 16+)">Vocational & Craft Training (Ages 16+)</option>
+                      <option value="General Consultation / Visit Verification">General Consultation / Visit Verification</option>
                     </select>
                   </div>
                 </div>
@@ -265,24 +298,17 @@ export const ContactSection: React.FC = () => {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    disabled={loading}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white rounded-xl font-bold text-sm shadow-md shadow-emerald-700/20 hover:shadow-lg transition-all cursor-pointer disabled:opacity-50"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white rounded-xl font-bold text-sm shadow-md shadow-emerald-700/20 hover:shadow-lg transition-all cursor-pointer"
                   >
-                    {loading ? (
-                      <span>Sending inquiry...</span>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" />
-                        <span>Submit Inquiry to School</span>
-                      </>
-                    )}
+                    <MessageCircle className="w-4 h-4" />
+                    <span>Submit & Send via WhatsApp</span>
                   </button>
                 </div>
 
                 <div className="flex items-center gap-2 pt-2 text-[11px] text-slate-500">
                   <AlertCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>
-                    Zero spam promise. Your family's contact details remain strictly confidential.
+                    Your inquiry details open directly in WhatsApp to speak with the school coordinator.
                   </span>
                 </div>
               </form>
