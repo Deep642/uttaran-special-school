@@ -103,13 +103,6 @@ export const Navbar: React.FC = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
-            >
-              Contact Us
-            </a>
 
             <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2.5">
               <a
