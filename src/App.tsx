@@ -22,7 +22,7 @@ export const App: React.FC = () => {
         <About />
         <Programs />
         <TeamSection />
-        <AlumniSection />
+        {/* <AlumniSection /> (Temporarily paused as requested) */}
         <GallerySection />
         <DonationSection />
         <ContactSection />

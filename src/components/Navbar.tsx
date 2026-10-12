@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
     { label: "About Us", href: "#about" },
     { label: "Programs", href: "#programs" },
     { label: "Faculty & Staff", href: "#team" },
-    { label: "Alumni Pride", href: "#alumni" },
+    // { label: "Alumni Pride", href: "#alumni" },
     { label: "Campus Gallery", href: "#gallery" },
     { label: "Support & Donate", href: "#donate" },
     { label: "Contact", href: "#contact" },
