@@ -3,46 +3,24 @@ import {
   Heart,
   QrCode,
   Building2,
-  Gift,
   Copy,
   Check,
   Smartphone,
-  ExternalLink,
   MessageCircle,
   ShieldCheck,
-  Sparkles,
-  Palette,
-  Apple,
-  Armchair,
   CheckCircle2
 } from 'lucide-react';
 import { donationData } from '../data/donation';
 
 export const DonationSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'upi' | 'bank' | 'inkind'>('upi');
+  const [activeTab, setActiveTab] = useState<'upi' | 'bank'>('upi');
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [selectedInKind, setSelectedInKind] = useState<string | null>(null);
 
   // Quick copy helper with feedback
   const handleCopy = (text: string, fieldName: string) => {
     navigator.clipboard.writeText(text);
     setCopiedField(fieldName);
     setTimeout(() => setCopiedField(null), 2500);
-  };
-
-  const getWishlistIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Sparkles':
-        return <Sparkles className="w-5 h-5 text-emerald-600" />;
-      case 'Palette':
-        return <Palette className="w-5 h-5 text-teal-600" />;
-      case 'Apple':
-        return <Apple className="w-5 h-5 text-amber-600" />;
-      case 'Armchair':
-        return <Armchair className="w-5 h-5 text-sky-600" />;
-      default:
-        return <Gift className="w-5 h-5 text-emerald-600" />;
-    }
   };
 
   const whatsappReceiptUrl = `https://wa.me/${donationData.whatsappReceiptNumber}?text=${encodeURIComponent(
@@ -62,16 +40,16 @@ export const DonationSection: React.FC = () => {
             Direct Support & Contributions
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            100% of your generous contribution directly aids sensory therapy kits, adaptive education, and child nutrition in Berhampore with <strong className="text-slate-900">0% third-party gateway deductions</strong>.
+            100% of your generous contribution directly aids sensory therapy, adaptive education, and child care in Berhampore with <strong className="text-slate-900">0% third-party gateway deductions</strong>.
           </p>
         </div>
 
-        {/* 3 Main Donation Modes Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        {/* 2 Main Donation Modes Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
           <button
             type="button"
             onClick={() => setActiveTab('upi')}
-            className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               activeTab === 'upi'
                 ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20 scale-102'
                 : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
@@ -84,7 +62,7 @@ export const DonationSection: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab('bank')}
-            className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               activeTab === 'bank'
                 ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20 scale-102'
                 : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
@@ -92,19 +70,6 @@ export const DonationSection: React.FC = () => {
           >
             <Building2 className="w-4 h-4" />
             <span>Bank Transfer (NEFT / IMPS)</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab('inkind')}
-            className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-              activeTab === 'inkind'
-                ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20 scale-102'
-                : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            <Gift className="w-4 h-4" />
-            <span>Sponsor a Need (In-Kind Wishlist)</span>
           </button>
         </div>
 
@@ -269,61 +234,6 @@ export const DonationSection: React.FC = () => {
                   <strong className="font-semibold block text-amber-950">Donations via Account Payee Cheque:</strong>
                   Cheques should be drawn in favor of <em>"{donationData.chequePayableTo}"</em> and can be handed over at our school office in Raninagar, Berhampore.
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 3: SPONSOR A NEED (IN-KIND WISHLIST) */}
-          {activeTab === 'inkind' && (
-            <div className="space-y-6">
-              <div>
-                <span className="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
-                  Material & Program Sponsorship
-                </span>
-                <h3 className="text-2xl font-extrabold text-slate-900 mt-2">
-                  Sponsor a Child's Concrete Need
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                  Prefer directly contributing educational or therapy materials rather than cash? Choose a specific need below to sponsor directly or deliver to campus:
-                </p>
-              </div>
-
-              {/* Wishlist Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {donationData.inKindWishlist.map((item) => (
-                  <div
-                    key={item.id}
-                    className={`p-5 rounded-2xl border transition-all ${
-                      selectedInKind === item.id
-                        ? 'border-emerald-500 bg-emerald-50/40 shadow-xs'
-                        : 'border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300'
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <div className="p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
-                        {getWishlistIcon(item.icon)}
-                      </div>
-                      <span className="text-xs font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full">
-                        {item.estimatedCost}
-                      </span>
-                    </div>
-
-                    <h4 className="text-sm font-bold text-slate-900 mb-1">{item.title}</h4>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-4">{item.description}</p>
-
-                    <a
-                      href={`https://wa.me/${donationData.whatsappReceiptNumber}?text=${encodeURIComponent(
-                        `Hello Uttaran Special School, I would like to sponsor or contribute towards: "${item.title}". Please guide me on delivery or procurement.`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline"
-                    >
-                      <span>Sponsor this item via WhatsApp</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-                ))}
               </div>
             </div>
           )}
