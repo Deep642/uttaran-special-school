@@ -18,19 +18,14 @@ const marqueePhotos: PhotoItem[] = [
     bengaliTag: "বিশেষ পাঠদান ও সরল গণনা",
   },
   {
-    src: "/gallery/uttaran-creative-art.jpg",
-    title: "Creative Art & Name Writing",
-    bengaliTag: "রঙিন অক্ষর ও অঙ্কন",
-  },
-  {
-    src: "/gallery/coin-math-numeracy.jpg",
-    title: "Functional Numeracy & Coins",
-    bengaliTag: "দৈনন্দিন মুদ্রা ও বাস্তব জ্ঞান",
+    src: "/gallery/school-media-1.jpg",
+    title: "Visual Story & Cognitive Learning",
+    bengaliTag: "চিত্র নির্ভর পাঠদান",
   },
   {
     src: "/gallery/classroom-instruction.jpg",
     title: "1:1 Teacher-Student Guidance",
-    bengaliTag: "একক যত্ন ও স্নেহময় পাঠদান",
+    bengaliTag: "একক যত্ন ও স্নেহময় শিক্ষা",
   },
   {
     src: "/gallery/school-media-22.jpeg",
@@ -43,19 +38,19 @@ const marqueePhotos: PhotoItem[] = [
     bengaliTag: "শারীরিক সক্ষমতা বিকাশ",
   },
   {
-    src: "/gallery/school-media-27.jpeg",
-    title: "Group Learning & Care",
-    bengaliTag: "দলগত শিক্ষণ ও পরিচর্যা",
+    src: "/gallery/school-media-7.jpg",
+    title: "Focus & Attention Training",
+    bengaliTag: "মনোযোগ ও একাগ্রতা চর্চা",
   },
   {
-    src: "/gallery/school-media-20.jpeg",
-    title: "Campus Cultural Moments",
-    bengaliTag: "সাংস্কৃতিক অনুষ্ঠান ও উৎসব",
+    src: "/gallery/school-media-13.jpg",
+    title: "Fine Motor Dexterity",
+    bengaliTag: "হাতের সূক্ষ্ম কাজ ও গ্রিপ",
   },
   {
-    src: "/gallery/school-media-17.jpg",
-    title: "Student Growth Milestones",
-    bengaliTag: "প্রতিটি শিশুর নিজস্ব অগ্রগতি",
+    src: "/gallery/school-media-18.jpg",
+    title: "Calm Corner & Emotional Grounding",
+    bengaliTag: "আবেগ নিয়ন্ত্রণ ও প্রশান্তি",
   },
 ];
 

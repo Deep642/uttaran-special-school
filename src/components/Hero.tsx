@@ -4,10 +4,11 @@ import { schoolInfo } from '../data/schoolInfo';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 sm:pt-12 sm:pb-24 bg-gradient-to-b from-emerald-50/50 via-[#FDFDFB] to-[#FBFBFA]">
-      {/* Decorative subtle ambient circles */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-teal-200/20 rounded-full blur-3xl pointer-events-none -z-10" />
+    <section className="relative overflow-hidden pt-8 pb-16 sm:pt-12 sm:pb-24 bg-gradient-to-br from-amber-100/60 via-rose-50/50 via-sky-50/60 to-emerald-100/60 border-b border-slate-200/50">
+      {/* Decorative vibrant ambient circles from the logo palette */}
+      <div className="absolute -top-12 -right-12 w-96 h-96 bg-gradient-to-br from-rose-300/35 to-amber-300/30 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-gradient-to-tr from-sky-300/35 to-emerald-300/30 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -bottom-10 right-1/4 w-72 h-72 bg-amber-300/25 rounded-full blur-2xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">

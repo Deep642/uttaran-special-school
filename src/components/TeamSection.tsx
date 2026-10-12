@@ -11,7 +11,11 @@ export const TeamSection: React.FC = () => {
       : staffMembers.filter((member) => member.category === activeCategory);
 
   return (
-    <section id="team" className="py-16 sm:py-24 bg-white border-b border-slate-200/70">
+    <section id="team" className="py-16 sm:py-24 bg-gradient-to-br from-amber-50/70 via-rose-50/50 to-sky-50/60 border-b border-slate-200/70 relative overflow-hidden">
+      {/* Background ambient color flares */}
+      <div className="absolute top-10 -left-12 w-80 h-80 bg-rose-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 -right-12 w-80 h-80 bg-amber-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

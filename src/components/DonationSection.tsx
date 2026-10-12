@@ -28,8 +28,12 @@ export const DonationSection: React.FC = () => {
   )}`;
 
   return (
-    <section id="donate" className="scroll-mt-20 py-16 sm:py-24 bg-gradient-to-b from-[#FBFBFA] via-white to-emerald-50/40 border-b border-slate-200/70">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="donate" className="scroll-mt-20 py-16 sm:py-24 bg-gradient-to-br from-amber-100/60 via-rose-50/50 via-sky-50/60 to-emerald-100/60 border-b border-slate-200/70 relative overflow-hidden">
+      {/* Radiant ambient glow orbs from official school emblem palette */}
+      <div className="absolute top-10 -right-20 w-80 h-80 rounded-full bg-rose-300/30 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -left-20 w-80 h-80 rounded-full bg-emerald-300/30 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 w-96 h-96 rounded-full bg-amber-300/20 blur-3xl pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs sm:text-sm font-bold tracking-wide uppercase mb-3 shadow-2xs">

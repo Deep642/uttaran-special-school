@@ -46,8 +46,12 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-white border-t border-slate-200/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-16 sm:py-24 bg-gradient-to-br from-sky-50/70 via-emerald-50/50 via-amber-50/60 to-rose-50/60 border-t border-slate-200/60 relative overflow-hidden">
+      {/* Radiant ambient glow orbs */}
+      <div className="absolute top-10 -left-20 w-80 h-80 rounded-full bg-sky-300/30 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -right-20 w-80 h-80 rounded-full bg-amber-300/30 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 w-96 h-96 rounded-full bg-emerald-300/20 blur-3xl pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">

@@ -27,13 +27,23 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-16 sm:py-24 bg-white border-y border-slate-200/60">
+    <section id="about" className="py-16 sm:py-24 bg-gradient-to-b from-emerald-50/50 via-amber-50/60 to-rose-50/50 border-y border-slate-200/60 relative overflow-hidden">
+      {/* Background ambient color flares */}
+      <div className="absolute top-10 right-10 w-80 h-80 bg-sky-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-rose-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-            About Our Mission
-          </span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200 text-slate-800 text-xs sm:text-sm font-bold tracking-wider uppercase mb-3 shadow-2xs">
+            <div className="flex -space-x-1">
+              <span className="w-2 h-2 rounded-full bg-rose-500" />
+              <span className="w-2 h-2 rounded-full bg-sky-500" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
+            </div>
+            <span>About Our Mission • আমাদের উদ্দেশ্য</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 mb-4 tracking-tight">
             Nurturing Potential Without Conventional Pressure
           </h2>
