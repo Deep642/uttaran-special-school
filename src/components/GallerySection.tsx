@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Camera, Eye, Filter } from 'lucide-react';
+import { Camera, Eye, Filter, ExternalLink } from 'lucide-react';
 import { galleryItems, GalleryItem } from '../data/gallery';
 import { PhotoModal } from './Modals';
 
@@ -111,6 +111,30 @@ export const GallerySection: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Facebook Page Social Highlights Banner */}
+        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-blue-950 to-emerald-950 text-white flex flex-col sm:flex-row items-center justify-between gap-6 border border-slate-800 shadow-sm">
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase mb-1">
+              <span>অফিসিয়াল ফেসবুক পেজ • Official Facebook Page</span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-extrabold text-white">
+              Watch Videos & Daily Student Moments on Facebook
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+              Explore cultural performances, sports day videos, therapy milestones, and festival celebrations shared directly on the school's official page.
+            </p>
+          </div>
+          <a
+            href="https://www.facebook.com/profile.php?id=61565479896427"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer"
+          >
+            <span>Visit Facebook Page</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
       </div>
 

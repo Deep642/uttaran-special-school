@@ -123,6 +123,17 @@ export const Footer: React.FC = () => {
                   {schoolInfo.contacts.email}
                 </a>
               </div>
+
+              <div className="flex items-center gap-2.5 pt-1">
+                <a
+                  href={schoolInfo.socials.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-blue-900/60 border border-slate-700/80 text-blue-300 hover:text-white transition-colors text-xs font-semibold"
+                >
+                  <span>Follow on Facebook</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

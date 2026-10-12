@@ -34,6 +34,9 @@ export interface SchoolInfo {
     email: string;
     visitingHours: string;
   };
+  socials: {
+    facebook: string;
+  };
   mapEmbedUrl: string;
   mapDirectLink: string;
   statusNotice: string;
@@ -79,6 +82,9 @@ export const schoolInfo: SchoolInfo = {
     phoneSecondaryFormatted: "+91 96415 15126",
     email: "uttaranashray22@gmail.com",
     visitingHours: "Mon – Sat: 9:30 AM – 3:00 PM",
+  },
+  socials: {
+    facebook: "https://www.facebook.com/profile.php?id=61565479896427",
   },
   // Google Maps embed centered on C.R. Das Road, Dhopaghati / Raninagar area, Berhampore
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.080517724391!2d88.2486!3d24.0955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f97dcd1bfbf4d7%3A0x1bb29910d6439b1a!2sC.R.+Das+Road%2C+Dhopaghati%2C+Berhampore%2C+West+Bengal+742101!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
