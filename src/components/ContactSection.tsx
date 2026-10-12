@@ -68,29 +68,31 @@ export const ContactSection: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
                 href={`tel:${schoolInfo.contacts.phonePrimary}`}
-                className="p-5 rounded-2xl bg-emerald-50/50 border border-emerald-200/80 hover:bg-emerald-50 transition-all flex items-start gap-3.5 group"
+                className="p-4 sm:p-5 rounded-2xl bg-emerald-50/50 border border-emerald-200/80 hover:bg-emerald-50 transition-all flex items-center gap-3.5 group"
               >
-                <div className="p-2.5 rounded-xl bg-emerald-600 text-white group-hover:scale-105 transition-transform">
+                <div className="w-11 h-11 shrink-0 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <h4 className="text-xs uppercase font-bold text-emerald-800 tracking-wider">Phone Call</h4>
-                  <p className="text-sm font-bold text-slate-900 mt-0.5">{schoolInfo.contacts.phoneFormatted}</p>
-                  <span className="text-[11px] text-emerald-700 font-medium">Tap to call our desk</span>
+                  <p className="text-sm font-bold text-slate-900 mt-0.5 truncate">{schoolInfo.contacts.phoneFormatted}</p>
+                  <span className="text-[11px] text-emerald-700 font-medium block">Tap to call our desk</span>
                 </div>
               </a>
 
               <a
                 href={`mailto:${schoolInfo.contacts.email}`}
-                className="p-5 rounded-2xl bg-teal-50/50 border border-teal-200/80 hover:bg-teal-50 transition-all flex items-start gap-3.5 group"
+                className="p-4 sm:p-5 rounded-2xl bg-teal-50/50 border border-teal-200/80 hover:bg-teal-50 transition-all flex items-center gap-3.5 group"
               >
-                <div className="p-2.5 rounded-xl bg-teal-600 text-white group-hover:scale-105 transition-transform">
+                <div className="w-11 h-11 shrink-0 rounded-xl bg-teal-600 text-white flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <h4 className="text-xs uppercase font-bold text-teal-800 tracking-wider">Email Inquiry</h4>
-                  <p className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5 truncate">{schoolInfo.contacts.email}</p>
-                  <span className="text-[11px] text-teal-700 font-medium">Send general questions</span>
+                  <p className="text-xs sm:text-[13px] font-bold text-slate-900 mt-0.5 truncate" title={schoolInfo.contacts.email}>
+                    {schoolInfo.contacts.email}
+                  </p>
+                  <span className="text-[11px] text-teal-700 font-medium block">Send general questions</span>
                 </div>
               </a>
             </div>

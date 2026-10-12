@@ -110,14 +110,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 flex items-center justify-center text-center text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} Uttaran Special School. All rights reserved.
-          </p>
-          <p className="flex items-center gap-1.5 text-slate-400">
-            <span>Built with care for the Berhampore community</span>
-            <span>•</span>
-            <span className="text-emerald-400 font-medium">100% Static & Lightweight</span>
           </p>
         </div>
       </div>
