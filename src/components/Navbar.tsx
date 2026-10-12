@@ -57,13 +57,13 @@ export const Navbar: React.FC = () => {
           </nav>
 
           <div className="flex items-center gap-2">
-            {/* Donation Button with Love/Heart Icon */}
+            {/* Donation Button with Emerald Combination */}
             <a
               href="#donate"
               aria-label="Make a donation"
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-amber-400 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-bold text-slate-950 shadow-xs transition-colors hover:bg-amber-500"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-emerald-100/90 border border-emerald-300 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold text-emerald-900 shadow-2xs transition-colors hover:bg-emerald-200 hover:border-emerald-400"
             >
-              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-emerald-700 text-emerald-700" />
+              <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-700 fill-emerald-600" />
               <span>Donation</span>
             </a>
 
