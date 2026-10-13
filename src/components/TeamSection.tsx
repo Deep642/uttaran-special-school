@@ -36,11 +36,11 @@ export const TeamSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Founder Image & Title */}
             <div className="lg:col-span-4 text-center lg:text-left">
-              <div className="relative inline-block w-48 sm:w-56 aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-md mx-auto">
+              <div className="relative inline-block w-48 sm:w-60 aspect-[4/5] rounded-3xl overflow-hidden border-4 border-white shadow-md mx-auto bg-amber-50">
                 <img
                   src={leadershipData.photoUrl}
                   alt={leadershipData.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <div className="mt-4">
@@ -147,11 +147,11 @@ export const TeamSection: React.FC = () => {
               >
                 <div>
                   {/* Photo Header */}
-                  <div className="relative aspect-4/3 overflow-hidden bg-slate-100">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-slate-100">
                     <img
                       src={member.photoUrl}
                       alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
                     <span
