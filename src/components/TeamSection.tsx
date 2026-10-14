@@ -5,6 +5,10 @@ import { leadershipData, staffMembers, StaffMember } from '../data/team';
 export const TeamSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'teaching' | 'non-teaching'>('all');
 
+  const teachingCount = staffMembers.filter((member) => member.category === 'teaching').length;
+  const nonTeachingCount = staffMembers.filter((member) => member.category === 'non-teaching').length;
+  const showCategoryTabs = teachingCount > 0 && nonTeachingCount > 0;
+
   const filteredStaff =
     activeCategory === 'all'
       ? staffMembers
@@ -27,7 +31,7 @@ export const TeamSection: React.FC = () => {
             The Hearts & Minds Behind Uttaran
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Our compassionate founder, certified special educators, speech therapists, and attentive caregivers who guide each child every single day.
+            Our dedicated leadership and certified special educators guiding each child with love, patience, and specialized methodology every single day.
           </p>
         </div>
 
@@ -96,50 +100,52 @@ export const TeamSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
             <div>
               <h3 className="text-2xl font-extrabold text-slate-900">
-                Faculty & Care Pillars
+                Faculty & Special Educators
               </h3>
               <p className="text-xs sm:text-sm text-slate-500">
-                Trained special educators and attentive support personnel working hand-in-hand
+                Certified special educators dedicated to nurturing each student's potential
               </p>
             </div>
 
-            {/* Category Filter Tabs */}
-            <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl">
-              <button
-                onClick={() => setActiveCategory('all')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  activeCategory === 'all'
-                    ? 'bg-white text-emerald-800 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                All Team ({staffMembers.length})
-              </button>
-              <button
-                onClick={() => setActiveCategory('teaching')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  activeCategory === 'teaching'
-                    ? 'bg-white text-emerald-800 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Teaching & Therapists
-              </button>
-              <button
-                onClick={() => setActiveCategory('non-teaching')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  activeCategory === 'non-teaching'
-                    ? 'bg-white text-emerald-800 shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Care & Support Staff
-              </button>
-            </div>
+            {/* Category Filter Tabs (visible when multiple categories exist) */}
+            {showCategoryTabs && (
+              <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl">
+                <button
+                  onClick={() => setActiveCategory('all')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    activeCategory === 'all'
+                      ? 'bg-white text-emerald-800 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  All Team ({staffMembers.length})
+                </button>
+                <button
+                  onClick={() => setActiveCategory('teaching')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    activeCategory === 'teaching'
+                      ? 'bg-white text-emerald-800 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Teaching Faculty ({teachingCount})
+                </button>
+                <button
+                  onClick={() => setActiveCategory('non-teaching')}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    activeCategory === 'non-teaching'
+                      ? 'bg-white text-emerald-800 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Care & Support ({nonTeachingCount})
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Staff Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className={`grid grid-cols-1 sm:grid-cols-2 ${staffMembers.length <= 2 ? 'max-w-3xl mx-auto' : 'lg:grid-cols-3 xl:grid-cols-4'} gap-6`}>
             {filteredStaff.map((member) => (
               <div
                 key={member.id}
