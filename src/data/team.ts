@@ -36,6 +36,18 @@ export const leadershipData: LeadershipInfo = {
 export const staffMembers: StaffMember[] = [
   // Genuine Registered Teaching Staff & Special Educators
   {
+    id: "staff-partha-bhattacharya",
+    name: "Partha Bhattacharya (পার্থ ভট্টাচার্য)",
+    role: "Principal (Special Educator)",
+    category: "teaching",
+    categoryLabel: "Principal & Special Educator",
+    qualifications: "Principal & Special Educator Lead",
+    specialization: "Special Education Leadership & Child Development",
+    experience: "Founder & Principal",
+    bioSnippet: "Founder and Principal leading Uttaran Special School, dedicated to empowering children with special needs through tailored developmental guidance.",
+    photoUrl: "/team/partha-bhattacharya.jpg",
+  },
+  {
     id: "staff-madhab-mandal",
     name: "Madhab Mandal",
     role: "Special Educator (Teacher)",

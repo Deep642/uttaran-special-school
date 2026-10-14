@@ -145,7 +145,7 @@ export const TeamSection: React.FC = () => {
           </div>
 
           {/* Staff Cards Grid */}
-          <div className={`grid grid-cols-1 sm:grid-cols-2 ${staffMembers.length <= 2 ? 'max-w-3xl mx-auto' : 'lg:grid-cols-3 xl:grid-cols-4'} gap-6`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 ${staffMembers.length <= 2 ? 'max-w-3xl mx-auto' : staffMembers.length === 3 ? 'lg:grid-cols-3 max-w-5xl mx-auto' : 'lg:grid-cols-3 xl:grid-cols-4'} gap-6`}>
             {filteredStaff.map((member) => (
               <div
                 key={member.id}
