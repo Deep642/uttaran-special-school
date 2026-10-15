@@ -9,11 +9,14 @@ export interface LeadershipInfo {
   contactNote?: string;
 }
 
+export type StaffDesignationGroup = 'leadership' | 'special-educator' | 'co-teacher';
+
 export interface StaffMember {
   id: string;
   name: string;
   role: string;
   category: 'teaching' | 'non-teaching';
+  designationGroup: StaffDesignationGroup;
   categoryLabel: string;
   qualifications: string;
   specialization: string;
@@ -34,12 +37,13 @@ export const leadershipData: LeadershipInfo = {
 };
 
 export const staffMembers: StaffMember[] = [
-  // Genuine Registered Teaching Staff & Special Educators
+  // 1. Leadership & Institutional Head
   {
     id: "staff-partha-bhattacharjee",
     name: "Partha Bhattacharjee (পার্থ ভট্টাচার্য)",
     role: "Principal CUM Coordinator (IDD & ASD)",
     category: "teaching",
+    designationGroup: "leadership",
     categoryLabel: "Principal & Coordinator",
     qualifications: "Principal CUM Coordinator (IDD & ASD)",
     specialization: "Intellectual & Developmental Disabilities (IDD) & ASD",
@@ -47,11 +51,14 @@ export const staffMembers: StaffMember[] = [
     bioSnippet: "Founder and Principal leading Uttaran Special School, dedicated to empowering children with special needs through tailored developmental guidance.",
     photoUrl: "/team/partha-bhattacharjee.jpg",
   },
+
+  // 2. Specialized Educators (IDD, H.I, V.I)
   {
     id: "staff-krishna-ghosh",
     name: "Krishna Ghosh",
     role: "Special Educator (IDD)",
     category: "teaching",
+    designationGroup: "special-educator",
     categoryLabel: "Special Educator (IDD)",
     qualifications: "Special D.Ed (MR) • Special B.Ed (IDD)",
     specialization: "Intellectual & Developmental Disabilities (IDD)",
@@ -64,6 +71,7 @@ export const staffMembers: StaffMember[] = [
     name: "Madhab Mandal",
     role: "Special Educator (IDD)",
     category: "teaching",
+    designationGroup: "special-educator",
     categoryLabel: "Special Educator (IDD)",
     qualifications: "Certified Special Educator (IDD)",
     specialization: "Intellectual & Developmental Disabilities (IDD)",
@@ -76,6 +84,7 @@ export const staffMembers: StaffMember[] = [
     name: "Niladri Chatterjee",
     role: "Special Educator (H.I)",
     category: "teaching",
+    designationGroup: "special-educator",
     categoryLabel: "Special Educator (H.I)",
     qualifications: "Certified Special Educator (H.I)",
     specialization: "Hearing Impairment (H.I) & Auditory Communication",
@@ -88,12 +97,28 @@ export const staffMembers: StaffMember[] = [
     name: "Sampa Joyarder",
     role: "Special Educator (V.I)",
     category: "teaching",
+    designationGroup: "special-educator",
     categoryLabel: "Special Educator (V.I)",
     qualifications: "Certified Special Educator (V.I)",
     specialization: "Visual Impairment (V.I) & Tactile Education",
     experience: "Faculty Member",
     bioSnippet: "Specialist educator dedicated to visually-impaired students, focusing on tactile learning, mobility, and adaptive education.",
     photoUrl: "/team/sampa-joyarder.png",
+  },
+
+  // 3. Co-Teaching & Academic Mentors
+  {
+    id: "staff-namita-thakur",
+    name: "Namita Thakur",
+    role: "Co-Teacher",
+    category: "teaching",
+    designationGroup: "co-teacher",
+    categoryLabel: "Co-Teacher",
+    qualifications: "Trained Co-Educator",
+    specialization: "Classroom Learning Assistance & Student Engagement",
+    experience: "Faculty Member",
+    bioSnippet: "Supports lead special educators during classroom sessions, personalized activities, motor coordination exercises, and collaborative learning.",
+    photoUrl: "/team/namita-thakur.png",
   },
 ];
 
