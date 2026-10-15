@@ -35,6 +35,7 @@ export interface SchoolInfo {
     phoneSecondaryFormatted: string;
     email: string;
     visitingHours: string;
+    bengaliVisitingHours?: string;
   };
   socials: {
     facebook: string;
@@ -84,7 +85,8 @@ export const schoolInfo: SchoolInfo = {
     phoneSecondary: "+919641515126",
     phoneSecondaryFormatted: "+91 96415 15126",
     email: "uttaranashray22@gmail.com",
-    visitingHours: "Mon – Sat: 9:30 AM – 3:00 PM",
+    visitingHours: "Monday – Friday: 11:30 AM – 3:00 PM",
+    bengaliVisitingHours: "সোমবার – শুক্রবার: সকাল ১১:৩০ – দুপুর ৩:০০",
   },
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=61565479896427",

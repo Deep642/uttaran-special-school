@@ -143,11 +143,16 @@ export const ContactSection: React.FC = () => {
                 <Clock className="w-5 h-5 text-emerald-700 shrink-0 mt-1" />
                 <div>
                   <h4 className="text-sm font-bold text-slate-900">Visiting & School Hours (সাক্ষাতের সময়):</h4>
-                  <p className="text-xs sm:text-sm text-slate-700 mt-0.5">
+                  <p className="text-xs sm:text-sm font-semibold text-slate-800 mt-0.5">
                     {schoolInfo.contacts.visitingHours}
                   </p>
+                  {schoolInfo.contacts.bengaliVisitingHours && (
+                    <p className="text-xs text-emerald-800 font-medium mt-0.5">
+                      বাংলায়: {schoolInfo.contacts.bengaliVisitingHours}
+                    </p>
+                  )}
                   <p className="text-[11px] text-slate-500 mt-1">
-                    *Sundays and declared public holidays closed. Prior appointment recommended for new evaluations.
+                    *Saturday, Sunday and declared public holidays closed. Prior appointment recommended for new evaluations.
                   </p>
                 </div>
               </div>
