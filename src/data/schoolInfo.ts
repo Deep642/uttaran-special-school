@@ -62,7 +62,7 @@ export const schoolInfo: SchoolInfo = {
   principal: {
     name: "Partha Bhattacharjee",
     bengaliName: "পার্থ ভট্টাচার্য",
-    designation: "Principal / Administrator",
+    designation: "Principal CUM Coordinator (IDD & ASD)",
     phone: "+919641515126",
     phoneFormatted: "+91 96415 15126",
   },

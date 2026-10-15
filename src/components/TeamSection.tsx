@@ -103,7 +103,7 @@ export const TeamSection: React.FC = () => {
                 Faculty & Special Educators
               </h3>
               <p className="text-xs sm:text-sm text-slate-500">
-                Certified special educators dedicated to nurturing each student's potential
+                Specialized educators in IDD, ASD, Hearing Impairment (H.I), and Visual Impairment (V.I)
               </p>
             </div>
 
@@ -145,7 +145,7 @@ export const TeamSection: React.FC = () => {
           </div>
 
           {/* Staff Cards Grid */}
-          <div className={`grid grid-cols-1 sm:grid-cols-2 ${staffMembers.length <= 2 ? 'max-w-3xl mx-auto' : staffMembers.length === 3 ? 'lg:grid-cols-3 max-w-5xl mx-auto' : 'lg:grid-cols-3 xl:grid-cols-4'} gap-6`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 ${staffMembers.length <= 2 ? 'max-w-3xl mx-auto' : 'lg:grid-cols-3 max-w-6xl mx-auto'} gap-6`}>
             {filteredStaff.map((member) => (
               <div
                 key={member.id}
